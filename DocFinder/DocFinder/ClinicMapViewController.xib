@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClinicMapViewController" customModule="DocFinder" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="XJ0-Oi-D9U" id="CIA-Ap-JPp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="OJO-ue-3Lp"/>
             </connections>
         </placeholder>

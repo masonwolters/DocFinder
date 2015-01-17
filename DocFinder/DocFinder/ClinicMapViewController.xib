@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -14,18 +14,25 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXI-Sb-1fq">
-                    <rect key="frame" x="283" y="289" width="35" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-Oi-D9U">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="HXI-Sb-1fq" secondAttribute="centerX" id="0y5-ts-J8F"/>
-                <constraint firstAttribute="centerY" secondItem="HXI-Sb-1fq" secondAttribute="centerY" id="O4t-O8-PPD"/>
+                <constraint firstItem="XJ0-Oi-D9U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FH6-g9-T5F"/>
+                <constraint firstItem="XJ0-Oi-D9U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S6q-lB-9bE"/>
+                <constraint firstAttribute="centerY" secondItem="XJ0-Oi-D9U" secondAttribute="centerY" id="dp3-3P-D8v"/>
+                <constraint firstAttribute="trailing" secondItem="XJ0-Oi-D9U" secondAttribute="trailing" id="eVF-Dd-XQw"/>
+                <constraint firstAttribute="bottom" secondItem="XJ0-Oi-D9U" secondAttribute="bottom" id="njz-a2-rq1"/>
+                <constraint firstAttribute="centerX" secondItem="XJ0-Oi-D9U" secondAttribute="centerX" id="tq3-sS-eDB"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="dp3-3P-D8v"/>
+                    <exclude reference="tq3-sS-eDB"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

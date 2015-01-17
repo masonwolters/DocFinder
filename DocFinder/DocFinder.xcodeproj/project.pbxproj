@@ -13,6 +13,7 @@
 		46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */; };
 		46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */; };
 		B18224F20230302E0181F6F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4929F77F2B3467BB913640 /* libPods.a */; };
+		BAC0B0AD1A6ACE8700404F15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */; };
 		BADBB6E21A6A2FFA007AD96F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E11A6A2FFA007AD96F /* Images.xcassets */; };
 		BADBB6E51A6A2FFA007AD96F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */; };
 		BADBB6F11A6A2FFA007AD96F /* DocFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BADBB6F01A6A2FFA007AD96F /* DocFinderTests.m */; };
@@ -37,6 +38,7 @@
 		46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorLogInViewController.xib; sourceTree = "<group>"; };
 		6B4929F77F2B3467BB913640 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DF5F85C54CF30FFB990A09 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BADBB6D11A6A2FFA007AD96F /* DocFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BADBB6D51A6A2FFA007AD96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BADBB6E11A6A2FFA007AD96F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC0B0AD1A6ACE8700404F15 /* MapKit.framework in Frameworks */,
 				B18224F20230302E0181F6F0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +72,7 @@
 		0BD545313C0411CC7B32569B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */,
 				6B4929F77F2B3467BB913640 /* libPods.a */,
 			);
 			name = Frameworks;

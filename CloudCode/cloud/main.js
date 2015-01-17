@@ -1,5 +1,6 @@
 var twilio = require('twilio')('ACa7d329d1b5c88a9b2be8674ea4b304da', 'c307a90e5205a174cc2353de8fb4fa73');
 var googlePlaces = require('cloud/googlePlaces.js');
+var _ = require('underscore');
 
 var express = require('express');
 var app = express();
@@ -12,49 +13,40 @@ app.post('/receiveSMS', function(req, res) {
 	console.log(req.body);
 
 	googlePlaces.coordinateForSearch(req.body.Body, {
-		success: function(coordinate) {
+		success: function(place) {
 
-			// clinicsNearRadiusOfLatLng(coordinate.lat, coordinate.lng, 100, {
-			// 	success: function(clinics) {
+			clinicsNearRadiusOfLatLng(place.lat, place.lng, 200, {
+				success: function(clinics) {
 
-			// 		if (clinics.length > 0) {
-			// 			var clinic = clinics[0];
-			// 			twilio.sendSms({
-			// 				to: req.body.From,
-			// 				from: '+12313664054',
-			// 				body: 'The closest clinic is: ' + clinic.get('name')
-			// 			}, function(err, responseData) {
-			// 				res.send('something');
-			// 			});
-			// 		} else {
-			// 			//No Clinics Found
-			// 			twilio.sendSms({
-			// 				to: req.body.From,
-			// 				from: '+12313664054',
-			// 				body: 'No Clinics found within radius'
-			// 			}, function(err, responseData) {
-			// 				res.send('something');
-			// 			});
-			// 		}
+					var response;
 
-			// 	},
-			// 	error: function(error) {
+					if (clinics.length > 0) {
+						var clinic = clinics[0];
+						response = textResponseForClinic(clinic, place);
+					} else {
+						//No Clinics Found
+						response = 'No clinics found within radius of: ' + place.name;
+					}
 
-			// 	}
-			// });	
+					twilio.sendSms({
+						to: req.body.From,
+						from: '+12313664054',
+						body: response
+					}, function(err, responseData) {
+						res.send('something');
+					});
 
-			twilio.sendSms({
-				to: req.body.From,
-				from: '+12313664054',
-				body: 'Lat: ' + coordinate.lat + '; Lng: ' + coordinate.lng
-			}, function(err, responseData) {
-				if (err) {
-					res.send('Error');
-				} else {
-					res.send('Sent Successfully');
+				},
+				error: function(error) {
+					twilio.sendSms({
+						to: req.body.From,
+						from: '+12313664054',
+						body: 'An error occured when fetching clinics near your location'
+					}, function(err, responseData) {
+						res.send('something');
+					});
 				}
-			});
-
+			});	
 		},
 		error: function(error) {
 
@@ -79,7 +71,7 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 	var geoPoint = new Parse.GeoPoint({latitude: lat, longitude: lng});
 
 	var query = new Parse.Query(Parse.Object.extend('Clinic'));
-	query.withinMiles('location', geoPoint, radius);
+	query.withinKilometers('location', geoPoint, radius);
 
 	query.find({
 		success: function(results) {
@@ -90,5 +82,40 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 		}
 	});
 }
+
+function textResponseForClinic(clinic, gpInfo) {
+	//gpInfo is what is returned from googlePlaces.coordinateForSearch
+
+	var template = 'The closest clinic to <%= locationName %> is: <%= clinicName %>. It is <%= distance %> km. away.';
+
+	var userGeoPoint = new Parse.GeoPoint({latitude: gpInfo.lat, longitude: gpInfo.lng});
+	var distance = userGeoPoint.kilometersTo(clinic.get('location'));
+
+	return _.template(template, {
+		locationName: gpInfo.name,
+		clinicName: clinic.get('name'),
+		distance: distance.toFixed(1)
+	});
+}
   
 app.listen();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

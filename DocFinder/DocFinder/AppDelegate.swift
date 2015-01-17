@@ -13,9 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Window
     
-    var window: UIWindow!
+    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     
-    // MARK: View controller
+    // MARK: View controllers
     
     let tabBarController = UITabBarController()
     
@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [doctorNavigationController, clinicNavigationController]
         
         window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
         
         return true
     }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		467AEDD81A6AC8ED0028384C /* ClinicMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */; };
 		467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */; };
+		467AEDDC1A6ACE440028384C /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDDB1A6ACE440028384C /* DoctorViewController.swift */; };
+		467AEDDE1A6ACE520028384C /* DoctorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDDD1A6ACE520028384C /* DoctorViewController.xib */; };
+		467AEDE01A6ACF550028384C /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDDF1A6ACF550028384C /* IssueCell.xib */; };
+		467AEDE21A6AD1E50028384C /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDE11A6AD1E50028384C /* LoadingCell.xib */; };
+		467AEDE41A6AD6F00028384C /* ClinicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDE31A6AD6F00028384C /* ClinicCell.xib */; };
 		46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */; };
 		46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */; };
 		46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */; };
@@ -31,6 +36,11 @@
 /* Begin PBXFileReference section */
 		467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClinicMapViewController.xib; sourceTree = "<group>"; };
 		467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicMapViewController.swift; sourceTree = "<group>"; };
+		467AEDDB1A6ACE440028384C /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
+		467AEDDD1A6ACE520028384C /* DoctorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewController.xib; sourceTree = "<group>"; };
+		467AEDDF1A6ACF550028384C /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
+		467AEDE11A6AD1E50028384C /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		467AEDE31A6AD6F00028384C /* ClinicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClinicCell.xib; sourceTree = "<group>"; };
 		46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DocFinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorLogInViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +120,11 @@
 				46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */,
 				46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */,
 				46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */,
+				467AEDDB1A6ACE440028384C /* DoctorViewController.swift */,
+				467AEDDD1A6ACE520028384C /* DoctorViewController.xib */,
+				467AEDE31A6AD6F00028384C /* ClinicCell.xib */,
+				467AEDDF1A6ACF550028384C /* IssueCell.xib */,
+				467AEDE11A6AD1E50028384C /* LoadingCell.xib */,
 				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
 				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
 				BADBB6E11A6A2FFA007AD96F /* Images.xcassets */,
@@ -226,10 +241,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467AEDE21A6AD1E50028384C /* LoadingCell.xib in Resources */,
+				467AEDE41A6AD6F00028384C /* ClinicCell.xib in Resources */,
 				BADBB6E51A6A2FFA007AD96F /* LaunchScreen.xib in Resources */,
 				46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */,
+				467AEDDE1A6ACE520028384C /* DoctorViewController.xib in Resources */,
 				BADBB6E21A6A2FFA007AD96F /* Images.xcassets in Resources */,
 				467AEDD81A6AC8ED0028384C /* ClinicMapViewController.xib in Resources */,
+				467AEDE01A6ACF550028384C /* IssueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +302,7 @@
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,
+				467AEDDC1A6ACE440028384C /* DoctorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

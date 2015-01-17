@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate {
+class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate, DoctorViewControllerDelegate {
     
     // MARK: Actions
     
@@ -24,6 +24,18 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
     
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
         
-        
+        dismissViewControllerAnimated(true) {
+            
+            let doctorViewController = DoctorViewController(nibName: "DoctorViewController", bundle: nil)
+            doctorViewController.delegate = self
+            
+            self.showViewController(doctorViewController, sender: nil)
+        }
+    }
+    
+    // MARK: DoctorViewControllerDelegate
+    
+    func doctorViewControllerDidLogout(doctorViewController: DoctorViewController) {
+        navigationController!.popToRootViewControllerAnimated(true)
     }
 }

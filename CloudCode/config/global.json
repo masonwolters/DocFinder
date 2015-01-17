@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "DocFinder": {
+            "applicationId": "CdmE4AzemBZxYoogBlCCaEOrnv3w9E3s8jGqaHtn", 
+            "masterKey": "IrLG9YQh1WfsvXSRtJmjEz4Pqi57HkvJnQkI91Xt"
+        }, 
+        "_default": {
+            "link": "DocFinder"
+        }
+    }
+}

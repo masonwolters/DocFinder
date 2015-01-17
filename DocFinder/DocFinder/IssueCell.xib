@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="79" id="ISS-Au-clS" customClass="IssueCell" customModule="DocFinder" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ISS-Au-clS" customClass="IssueCell" customModule="DocFinder" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ISS-Au-clS" id="U9r-4l-2rY">
@@ -27,7 +27,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pl-fz-woz">
                         <rect key="frame" x="15" y="29" width="272" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -38,7 +38,6 @@
                     <constraint firstItem="JuF-rd-ZLK" firstAttribute="top" secondItem="U9r-4l-2rY" secondAttribute="top" constant="8" id="Ubk-g9-3cc"/>
                     <constraint firstItem="4Pl-fz-woz" firstAttribute="leading" secondItem="U9r-4l-2rY" secondAttribute="leading" constant="15" id="bLA-f4-wAh"/>
                     <constraint firstItem="4Pl-fz-woz" firstAttribute="top" secondItem="hF9-5K-PKB" secondAttribute="bottom" constant="2" id="c5C-99-Vba"/>
-                    <constraint firstAttribute="bottom" secondItem="4Pl-fz-woz" secondAttribute="bottom" constant="8" id="j0r-L4-Hlo"/>
                     <constraint firstItem="hF9-5K-PKB" firstAttribute="baseline" secondItem="JuF-rd-ZLK" secondAttribute="baseline" id="ndS-Em-JmJ"/>
                 </constraints>
             </tableViewCellContentView>

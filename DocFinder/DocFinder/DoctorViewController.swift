@@ -56,6 +56,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         let query = PFQuery(className: "Issue")
         query.whereKey("clinic", equalTo: doctor["clinic"])
         query.orderByAscending("date")
+        query.includeKey("lastMessage")
         
         query.findObjectsInBackgroundWithBlock { objects, error in
             if let objects = objects as? [PFObject] {
@@ -149,9 +150,12 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             if let issues = issues {
                 
                 let issue = issues[indexPath.row]
+                let message = issue["lastMessage"] as PFObject
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Issue.rawValue, forIndexPath: indexPath) as IssueCell
-                cell.patientNumberLabel.text! = issue["patientNumber"] as String
+                cell.patientNumberLabel.text! = issue["phoneNumber"] as String
+                cell.dateLabel.text! = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
+                cell.messageLabel.text! = message["text"] as String
                 return cell
                 
             } else {
@@ -170,6 +174,18 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             
         case .Issues:
             return "Issues"
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        switch Section(rawValue: indexPath.section)! {
+            
+        case .Me:
+            return 44.0
+            
+        case .Issues:
+            return 78.0
         }
     }
     

@@ -11,18 +11,43 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    // MARK: Window
+    
     var window: UIWindow!
+    
+    // MARK: View controller
+    
+    let tabBarController = UITabBarController()
+    
+    let doctorNavigationController = UINavigationController()
+    let doctorLogInViewController = DoctorLogInViewController(nibName: "DoctorLogInViewController", bundle: nil)
+    
+    let clinicNavigationController = UINavigationController()
+    let clinicMapViewController = ClinicMapViewController(nibName: "ClinicMapViewController", bundle: nil)
+    
+    // MARK: Life cycle
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         Parse.enableLocalDatastore()
         Parse.setApplicationId("CdmE4AzemBZxYoogBlCCaEOrnv3w9E3s8jGqaHtn", clientKey: "1pVBUqEJ90BwnwL7cjUGVgx9Cau2KaUaM6egj0u2")
         
-        let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
+        doctorNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .Contacts, tag: 0)
+        doctorNavigationController.viewControllers = [doctorLogInViewController]
         
-        let mainNavigationController = UINavigationController(rootViewController: mainViewController)
+        clinicNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .Search, tag: 0)
+        clinicNavigationController.viewControllers = [clinicMapViewController]
         
-        window.rootViewController = mainNavigationController
+        tabBarController.viewControllers = [doctorNavigationController, clinicNavigationController]
+        
+        window.rootViewController = tabBarController
+        
+        return true
+    }
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
+        
         
         return true
     }

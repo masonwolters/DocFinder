@@ -10,7 +10,10 @@ exports.coordinateForSearch = function(searchText, callbacks) {
 			if (results.length > 0) {
 				var first = results[0];
 				
-				var response = {lat: first.geometry.location.lat, lng: first.geometry.location.lng};
+				console.log(results);
+				var response = {lat: first.geometry.location.lat, 
+								lng: first.geometry.location.lng,
+								name: first.formatted_address};
 				callbacks.success(response);
 
 			} else {

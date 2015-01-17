@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
         
-        window.rootViewController = mainViewController
+        let mainNavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        window.rootViewController = mainNavigationController
         
         return true
     }

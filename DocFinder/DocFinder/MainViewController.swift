@@ -10,13 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func newUserButtonTouchUpInside() {
         
-
+        let signUpViewController = PFSignUpViewController()
+        
+        presentViewController(signUpViewController, animated: true, completion: nil)
     }
-    
-
     
     @IBAction func existingUserButtonTouchUpInside() {
         

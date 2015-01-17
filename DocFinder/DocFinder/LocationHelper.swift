@@ -17,9 +17,17 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     }
     
     let locationManager: CLLocationManager
+    var successCallback: ((location: CLLocation) -> Void)?
+    var errorCallback: ((error: NSError) -> Void)?
     
     func getCurrentLocation(success: (location: CLLocation) -> Void, error: (error: NSError) -> Void) {
-        
+        if (locationManager.location != nil) {
+            success(location: locationManager.location)
+        } else {
+            successCallback  = success
+            errorCallback = error
+            locationManager.startUpdatingLocation()
+        }
     }
     
     // MARK: CLLocationManagerDelegate
@@ -28,8 +36,17 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if let success = successCallback {
+            success(location: locations.last as CLLocation)
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        if let errorCallback = errorCallback {
+            errorCallback(error: error)
+        }
     }
     
     // MARK: Initialization
@@ -39,6 +56,8 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
         super.init()
         
         self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
 }

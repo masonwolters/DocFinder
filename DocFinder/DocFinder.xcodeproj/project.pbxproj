@@ -14,6 +14,9 @@
 		467AEDE01A6ACF550028384C /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDDF1A6ACF550028384C /* IssueCell.xib */; };
 		467AEDE21A6AD1E50028384C /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDE11A6AD1E50028384C /* LoadingCell.xib */; };
 		467AEDE41A6AD6F00028384C /* ClinicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDE31A6AD6F00028384C /* ClinicCell.xib */; };
+		467AEDEA1A6ADE330028384C /* Coalescer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDE71A6ADE330028384C /* Coalescer.swift */; };
+		467AEDEB1A6ADE330028384C /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDE81A6ADE330028384C /* Fetchable.swift */; };
+		467AEDEC1A6ADE330028384C /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDE91A6ADE330028384C /* Observer.swift */; };
 		46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */; };
 		46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */; };
 		46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */; };
@@ -44,6 +47,9 @@
 		467AEDDF1A6ACF550028384C /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		467AEDE11A6AD1E50028384C /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		467AEDE31A6AD6F00028384C /* ClinicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClinicCell.xib; sourceTree = "<group>"; };
+		467AEDE71A6ADE330028384C /* Coalescer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coalescer.swift; sourceTree = "<group>"; };
+		467AEDE81A6ADE330028384C /* Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
+		467AEDE91A6ADE330028384C /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DocFinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorLogInViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		467AEDE51A6ADDAD0028384C /* DoctorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				467AEDDB1A6ACE440028384C /* DoctorViewController.swift */,
+				467AEDDD1A6ACE520028384C /* DoctorViewController.xib */,
+				467AEDE31A6AD6F00028384C /* ClinicCell.xib */,
+				467AEDDF1A6ACF550028384C /* IssueCell.xib */,
+			);
+			name = DoctorViewController;
+			sourceTree = "<group>";
+		};
+		467AEDE61A6ADE1A0028384C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				467AEDE81A6ADE330028384C /* Fetchable.swift */,
+				467AEDE71A6ADE330028384C /* Coalescer.swift */,
+				467AEDE91A6ADE330028384C /* Observer.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		5A616CBFA1D89E4035EF1D4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +155,10 @@
 			children = (
 				46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */,
 				46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */,
+				467AEDE61A6ADE1A0028384C /* Model */,
 				46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */,
 				46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */,
-				467AEDDB1A6ACE440028384C /* DoctorViewController.swift */,
-				467AEDDD1A6ACE520028384C /* DoctorViewController.xib */,
-				467AEDE31A6AD6F00028384C /* ClinicCell.xib */,
-				467AEDDF1A6ACF550028384C /* IssueCell.xib */,
+				467AEDE51A6ADDAD0028384C /* DoctorViewController */,
 				467AEDE11A6AD1E50028384C /* LoadingCell.xib */,
 				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
 				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
@@ -310,11 +335,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467AEDEB1A6ADE330028384C /* Fetchable.swift in Sources */,
 				BAC0B0B11A6ACFC100404F15 /* LocationHelper.swift in Sources */,
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,
 				467AEDDC1A6ACE440028384C /* DoctorViewController.swift in Sources */,
+				467AEDEC1A6ADE330028384C /* Observer.swift in Sources */,
+				467AEDEA1A6ADE330028384C /* Coalescer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

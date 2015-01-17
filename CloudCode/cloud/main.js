@@ -86,14 +86,15 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 function textResponseForClinic(clinic, gpInfo) {
 	//gpInfo is what is returned from googlePlaces.coordinateForSearch
 
-	var template = 'The closest clinic to <%= locationName %> is: <%= clinicName %>. It is <%= distance %> km. away.';
+	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %>. It is <%= distance %> km away.';
 
 	var userGeoPoint = new Parse.GeoPoint({latitude: gpInfo.lat, longitude: gpInfo.lng});
 	var distance = userGeoPoint.kilometersTo(clinic.get('location'));
 
 	return _.template(template, {
-		locationName: gpInfo.name,
+		userLocationName: gpInfo.name,
 		clinicName: clinic.get('name'),
+		clinicLocationName: clinic.get('locationName'),
 		distance: distance.toFixed(1)
 	});
 }

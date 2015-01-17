@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */; };
+		46AA71B21A6A3DA40032E710 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71B11A6A3DA40032E710 /* MainViewController.swift */; };
+		46AA71B41A6A3DE90032E710 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* MainViewController.xib */; };
 		B18224F20230302E0181F6F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4929F77F2B3467BB913640 /* libPods.a */; };
 		BADBB6E21A6A2FFA007AD96F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E11A6A2FFA007AD96F /* Images.xcassets */; };
 		BADBB6E51A6A2FFA007AD96F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DocFinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46AA71B11A6A3DA40032E710 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		46AA71B31A6A3DE90032E710 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		6B4929F77F2B3467BB913640 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DF5F85C54CF30FFB990A09 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BADBB6D11A6A2FFA007AD96F /* DocFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,8 @@
 			children = (
 				46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */,
 				46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */,
+				46AA71B11A6A3DA40032E710 /* MainViewController.swift */,
+				46AA71B31A6A3DE90032E710 /* MainViewController.xib */,
 				BADBB6E11A6A2FFA007AD96F /* Images.xcassets */,
 				BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */,
 				BADBB6D41A6A2FFA007AD96F /* Supporting Files */,
@@ -215,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BADBB6E51A6A2FFA007AD96F /* LaunchScreen.xib in Resources */,
+				46AA71B41A6A3DE90032E710 /* MainViewController.xib in Resources */,
 				BADBB6E21A6A2FFA007AD96F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
+				46AA71B21A6A3DA40032E710 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

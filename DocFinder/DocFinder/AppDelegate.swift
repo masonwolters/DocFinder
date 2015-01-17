@@ -50,16 +50,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
+        // Log in automatically
+        
         if let doctor = PFUser.currentUser() {
             doctorLogInViewController.showDoctorViewController(doctor, animated: false)
         }
         
+        // Remote notifications
+        
+        application.registerForRemoteNotifications()
+        
+        // User notifications
+        
+        let settings = UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        
         return true
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        
+        application.applicationIconBadgeNumber = 0
     }
     
     // MARK: UITabBarControllerDelegate
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         return tabBarController.selectedViewController != viewController
+    }
+    
+    // MARK: User notifications
+    
+    
+    
+    // MARK: Remote notifications
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveEventually()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        completionHandler(.NewData)
     }
 }

@@ -54,7 +54,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     func fetchIssues() {
         
         let query = PFQuery(className: "Issue")
-        query.whereKey("doctor", equalTo: doctor)
+        query.whereKey("clinic", equalTo: doctor["clinic"])
         query.orderByAscending("date")
         
         query.findObjectsInBackgroundWithBlock { objects, error in

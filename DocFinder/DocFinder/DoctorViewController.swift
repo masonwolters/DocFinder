@@ -17,12 +17,22 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: Initialization
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init(doctor: PFUser) {
+        
+        self.doctor = doctor
+        
+        super.init(nibName: "DoctorViewController", bundle: nil)
+        
+        // Navigation item
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutBarButtonItemAction")
+        navigationItem.title = "Me"
+        
+        // Fetch
+        
+        fetchIssues()
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,11 +41,35 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     var delegate: DoctorViewControllerDelegate?
     
+    // MARK: Model
+    
+    let doctor: PFUser
+    
+    var issues: [PFObject]? {
+        didSet {
+            tableView.reloadSections(NSIndexSet(index: Section.Issues.rawValue), withRowAnimation: .Fade)
+        }
+    }
+    
+    func fetchIssues() {
+        
+        let query = PFQuery(className: "Issue")
+        query.whereKey("doctor", equalTo: doctor)
+        query.orderByAscending("date")
+        
+        query.findObjectsInBackgroundWithBlock { objects, error in
+            if let objects = objects as? [PFObject] {
+                self.issues = objects
+            }
+        }
+    }
+    
     // MARK: View
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.registerNib(Cell.Doctor.nib, forCellReuseIdentifier: Cell.Doctor.rawValue)
         tableView.registerNib(Cell.Clinic.nib, forCellReuseIdentifier: Cell.Clinic.rawValue)
         tableView.registerNib(Cell.Issue.nib, forCellReuseIdentifier: Cell.Issue.rawValue)
         tableView.registerNib(Cell.Loading.nib, forCellReuseIdentifier: Cell.Loading.rawValue)
@@ -45,6 +79,8 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     func logoutBarButtonItemAction() {
         
+        PFUser.logOut()
+        
         delegate?.doctorViewControllerDidLogout(self)
     }
     
@@ -53,12 +89,19 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     enum Section: Int {
-        case Clinic
+        
+        case Me
         case Issues
+        
+        enum MeRow: Int {
+            case Doctor
+            case Clinic
+        }
     }
     
     enum Cell: String {
         
+        case Doctor = "DoctorCell"
         case Clinic = "ClinicCell"
         case Issue = "IssueCell"
         case Loading = "LoadingCell"
@@ -76,11 +119,11 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         switch Section(rawValue: section)! {
             
-        case .Clinic:
-            return 1
+        case .Me:
+            return 2
             
         case .Issues:
-            return 1
+            return issues?.count ?? 1
         }
     }
     
@@ -88,11 +131,33 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         switch Section(rawValue: indexPath.section)! {
             
-        case .Clinic:
-            return tableView.dequeueReusableCellWithIdentifier(Cell.Clinic.rawValue, forIndexPath: indexPath) as UITableViewCell
+        case .Me:
+            
+            switch Section.MeRow(rawValue: indexPath.row)! {
+            case .Doctor:
+                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Doctor.rawValue, forIndexPath: indexPath) as UITableViewCell
+                cell.textLabel!.text! = doctor["name"] as String
+                cell.detailTextLabel!.text! = doctor["specialty"] as String
+                return cell
+                
+            case .Clinic:
+                return tableView.dequeueReusableCellWithIdentifier(Cell.Clinic.rawValue, forIndexPath: indexPath) as UITableViewCell
+            }
             
         case .Issues:
-            return tableView.dequeueReusableCellWithIdentifier(Cell.Loading.rawValue, forIndexPath: indexPath) as UITableViewCell
+            
+            if let issues = issues {
+                
+                let issue = issues[indexPath.row]
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Issue.rawValue, forIndexPath: indexPath) as IssueCell
+                cell.patientNumberLabel.text! = issue["patientNumber"] as String
+                return cell
+                
+            } else {
+                
+                return tableView.dequeueReusableCellWithIdentifier(Cell.Loading.rawValue, forIndexPath: indexPath) as UITableViewCell
+            }
         }
     }
     
@@ -100,8 +165,8 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         switch Section(rawValue: section)! {
             
-        case .Clinic:
-            return "Clinic"
+        case .Me:
+            return "My Info"
             
         case .Issues:
             return "Issues"

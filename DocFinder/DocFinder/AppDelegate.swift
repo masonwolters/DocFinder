@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
     // MARK: Window
     
@@ -32,15 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.setApplicationId("CdmE4AzemBZxYoogBlCCaEOrnv3w9E3s8jGqaHtn", clientKey: "1pVBUqEJ90BwnwL7cjUGVgx9Cau2KaUaM6egj0u2")
         
-        doctorNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .Contacts, tag: 0)
+        doctorNavigationController.tabBarItem = UITabBarItem(title: "Me", image: UIImage(named: "DoctorIcon"), tag: 0)
         doctorNavigationController.viewControllers = [doctorLogInViewController]
         
-        clinicNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .Search, tag: 0)
+        clinicNavigationController.tabBarItem = UITabBarItem(title: "Clinics", image: UIImage(named: "ClinicIcon"), tag: 0)
         clinicNavigationController.viewControllers = [clinicMapViewController]
         
         tabBarController.viewControllers = [doctorNavigationController, clinicNavigationController]
+        tabBarController.delegate = self
         
         window.rootViewController = tabBarController
+        window.tintColor = UIColor(red: 207.0/255.0, green: 029.0/255.0, blue: 012/255.0, alpha: 1.0)
         window.makeKeyAndVisible()
         
         return true
@@ -48,8 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
-        
+        if let doctor = PFUser.currentUser() {
+            doctorLogInViewController.showDoctorViewController(doctor, animated: false)
+        }
         
         return true
+    }
+    
+    // MARK: UITabBarControllerDelegate
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        return tabBarController.selectedViewController != viewController
     }
 }

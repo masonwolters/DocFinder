@@ -14,6 +14,8 @@
 		46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */; };
 		B18224F20230302E0181F6F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4929F77F2B3467BB913640 /* libPods.a */; };
 		BAC0B0AD1A6ACE8700404F15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */; };
+		BAC0B0AF1A6ACF6000404F15 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC0B0AE1A6ACF6000404F15 /* CoreLocation.framework */; };
+		BAC0B0B11A6ACFC100404F15 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0B0B01A6ACFC100404F15 /* LocationHelper.swift */; };
 		BADBB6E21A6A2FFA007AD96F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E11A6A2FFA007AD96F /* Images.xcassets */; };
 		BADBB6E51A6A2FFA007AD96F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */; };
 		BADBB6F11A6A2FFA007AD96F /* DocFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BADBB6F01A6A2FFA007AD96F /* DocFinderTests.m */; };
@@ -39,6 +41,8 @@
 		6B4929F77F2B3467BB913640 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DF5F85C54CF30FFB990A09 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BAC0B0AE1A6ACF6000404F15 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BAC0B0B01A6ACFC100404F15 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		BADBB6D11A6A2FFA007AD96F /* DocFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BADBB6D51A6A2FFA007AD96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BADBB6E11A6A2FFA007AD96F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC0B0AF1A6ACF6000404F15 /* CoreLocation.framework in Frameworks */,
 				BAC0B0AD1A6ACE8700404F15 /* MapKit.framework in Frameworks */,
 				B18224F20230302E0181F6F0 /* libPods.a in Frameworks */,
 			);
@@ -72,6 +77,7 @@
 		0BD545313C0411CC7B32569B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAC0B0AE1A6ACF6000404F15 /* CoreLocation.framework */,
 				BAC0B0AC1A6ACE8700404F15 /* MapKit.framework */,
 				6B4929F77F2B3467BB913640 /* libPods.a */,
 			);
@@ -116,6 +122,7 @@
 				46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */,
 				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
 				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
+				BAC0B0B01A6ACFC100404F15 /* LocationHelper.swift */,
 				BADBB6E11A6A2FFA007AD96F /* Images.xcassets */,
 				BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */,
 				BADBB6D41A6A2FFA007AD96F /* Supporting Files */,
@@ -284,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC0B0B11A6ACFC100404F15 /* LocationHelper.swift in Sources */,
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,

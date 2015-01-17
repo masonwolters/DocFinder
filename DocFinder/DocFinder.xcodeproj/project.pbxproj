@@ -336,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				467AEDEB1A6ADE330028384C /* Fetchable.swift in Sources */,
+				BAC0B0B11A6ACFC100404F15 /* LocationHelper.swift in Sources */,
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,

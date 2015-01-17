@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="DocFinder" customModuleProvider="target">
@@ -14,14 +15,40 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B5-Hf-6Cf">
-                    <rect key="frame" x="68" y="69" width="17" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jv-mU-diF">
+                    <rect key="frame" x="266" y="285" width="68" height="30"/>
+                    <state key="normal" title="New User">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="newUserButtonTouchUpInside" destination="-1" eventType="touchUpInside" id="5vB-dV-apI"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isS-Hc-jxA">
+                    <rect key="frame" x="262" y="140" width="76" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCZ-np-hsE">
+                    <rect key="frame" x="255" y="323" width="91" height="30"/>
+                    <state key="normal" title="Existing User">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="existingUserButtonTouchUpInside" destination="-1" eventType="touchUpInside" id="Cjf-Ic-XHw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pCZ-np-hsE" firstAttribute="top" secondItem="5jv-mU-diF" secondAttribute="bottom" constant="8" symbolic="YES" id="1PQ-xK-0jY"/>
+                <constraint firstAttribute="centerX" secondItem="5jv-mU-diF" secondAttribute="centerX" id="Fqy-mE-oPs"/>
+                <constraint firstAttribute="centerY" secondItem="isS-Hc-jxA" secondAttribute="centerY" multiplier="2" id="GEY-va-IQF"/>
+                <constraint firstAttribute="centerX" secondItem="isS-Hc-jxA" secondAttribute="centerX" id="KKn-bA-1dB"/>
+                <constraint firstAttribute="centerY" secondItem="5jv-mU-diF" secondAttribute="centerY" id="Vkb-lA-OOr"/>
+                <constraint firstAttribute="centerX" secondItem="pCZ-np-hsE" secondAttribute="centerX" id="nCO-9s-DxY"/>
+            </constraints>
         </view>
     </objects>
 </document>

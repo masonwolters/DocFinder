@@ -18,4 +18,10 @@ class MainViewController: UIViewController {
     
 
     
+    @IBAction func existingUserButtonTouchUpInside() {
+        
+        let logInViewController = PFLogInViewController()
+        
+        presentViewController(logInViewController, animated: true, completion: nil)
+    }
 }

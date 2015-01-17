@@ -17,19 +17,19 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: Initialization
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init(doctor: Doctor) {
+        super.init(nibName: "DoctorViewController", bundle: nil)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutBarButtonItemAction")
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.doctor = doctor
     }
     
     // MARK: Delegate
     
     var delegate: DoctorViewControllerDelegate?
+    
+    // MARK: Model
+    
+    let doctor: Doctor
     
     // MARK: View
     

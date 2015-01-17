@@ -26,7 +26,9 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
         
         dismissViewControllerAnimated(true) {
             
-            let doctorViewController = DoctorViewController(nibName: "DoctorViewController", bundle: nil)
+            let doctor = Doctor(object: user)
+            
+            let doctorViewController = DoctorViewController(doctor: doctor!)
             doctorViewController.delegate = self
             
             self.showViewController(doctorViewController, sender: nil)

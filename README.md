@@ -1,2 +1,2 @@
-# DoctorTracker
+# DocFinder
 MHacks V

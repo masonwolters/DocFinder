@@ -6,3 +6,22 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
+Parse.Cloud.define("twilioTest", function(req, res) {
+
+	//params:
+		//phoneNumber
+		//message
+
+	twilio.sendSms({
+		to: req.params.phoneNumber,
+		from: '+12313664054',
+		body: req.params.message
+	}, function(err, responseData) {
+		if (err) {
+			res.error(err);
+		} else {
+			res.success('Sent Successfully');
+		}
+	});
+
+});

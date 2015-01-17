@@ -16,9 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
-    NSLog(@"test");
+    // Setup the first view controller
     
     return YES;
 }

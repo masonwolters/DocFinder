@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [PFCloud callFunctionInBackground:@"twilioTest" withParameters:@{@"phoneNumber": @"+16165027765", @"message": @"Testing"} block:^(id object, NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

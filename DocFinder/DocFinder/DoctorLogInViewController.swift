@@ -25,17 +25,19 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
         
         dismissViewControllerAnimated(true) {
-            
-            let doctor = Doctor(object: user)
-            
-            let doctorViewController = DoctorViewController(doctor: doctor!)
-            doctorViewController.delegate = self
-            
-            self.showViewController(doctorViewController, sender: nil)
+            self.showDoctorViewController(user, animated: true)
         }
     }
     
-    // MARK: DoctorViewControllerDelegate
+    // MARK: DoctorViewController
+    
+    func showDoctorViewController(doctor: PFUser, animated: Bool) {
+        
+        let doctorViewController = DoctorViewController(doctor: doctor)
+        doctorViewController.delegate = self
+        
+        navigationController!.pushViewController(doctorViewController, animated: animated)
+    }
     
     func doctorViewControllerDidLogout(doctorViewController: DoctorViewController) {
         navigationController!.popToRootViewControllerAnimated(true)

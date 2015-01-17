@@ -157,8 +157,7 @@
 				467AEDF21A6AF08F0028384C /* DoctorLogInViewController */,
 				467AEDE51A6ADDAD0028384C /* DoctorViewController */,
 				467AEDE11A6AD1E50028384C /* LoadingCell.xib */,
-				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
-				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
+				BAE1B0271A6B047B0087F1B7 /* ClinicMapViewController */,
 				BAC0B0B01A6ACFC100404F15 /* LocationHelper.swift */,
 				BADBB6E11A6A2FFA007AD96F /* Images.xcassets */,
 				BADBB6E31A6A2FFA007AD96F /* LaunchScreen.xib */,
@@ -190,6 +189,15 @@
 				BADBB6EF1A6A2FFA007AD96F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BAE1B0271A6B047B0087F1B7 /* ClinicMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
+				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
+			);
+			name = ClinicMapViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

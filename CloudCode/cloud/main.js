@@ -241,16 +241,15 @@ function twilioSendError(phoneNumber, message) {
 
 Parse.Cloud.define('replyToIssue', function(req, res) {
 	//params
-		//issue
-		//doctor
-		//message
+		//phoneNumber
+		//string
 
 	twilio.sendSms({
-		to: req.params.issue.get('phoneNumber'),
+		to: req.params.phoneNumber,
 		from: '+12313664054',
 		body: req.params.message
 	}, function(err, response) {
-		if (error) {
+		if (err) {
 			res.error('Error sending message');
 		} else {
 			res.success('Success sending message');

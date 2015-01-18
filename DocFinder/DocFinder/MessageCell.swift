@@ -13,4 +13,5 @@ class MessageCell: UITableViewCell {
     @IBOutlet var senderLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var bubbleImage: UIImageView!
 }

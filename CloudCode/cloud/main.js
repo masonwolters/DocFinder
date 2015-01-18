@@ -39,6 +39,7 @@ app.post('/receiveSMS', function(req, res) {
 });
 
 function handleResponseToNewIssue(req, res) {
+	console.log('handle response to new issue');
 	googlePlaces.coordinateForSearch(req.body.Body, {
 		success: function(place) {
 
@@ -50,6 +51,18 @@ function handleResponseToNewIssue(req, res) {
 					if (clinics.length > 0) {
 						var clinic = clinics[0];
 						response = textResponseForClinic(clinic, place);
+						console.log('send twilio: '+response);
+
+						twilio.messages.create({
+							to: req.body.From,
+							from: '+12313664054',
+							body: response
+						}, function(err, responseData) {
+							if (err) {
+								console.log(err);
+							}
+						    res.end('success');
+						});
 
 						var geoPoint = new Parse.GeoPoint({latitude: place.lat, longitude: place.lng});
 
@@ -66,8 +79,6 @@ function handleResponseToNewIssue(req, res) {
 						issue.save(null, {
 							success: function(object) {
 								console.log('saved new issue');
-							    res.end('success');
-
 							},
 							error: function(error) {
 								console.log('error saving new issue');
@@ -86,15 +97,23 @@ function handleResponseToNewIssue(req, res) {
 					} else {
 						//No Clinics Found
 						response = 'No clinics found within radius of: ' + place.name;
+
+						twilio.sendSms({
+							to: req.body.From,
+							from: '+12313664054',
+							body: response
+						}, function(err, responseData) {
+						    res.end('success');
+						});
 					}
 
-					twilio.sendSms({
-						to: req.body.From,
-						from: '+12313664054',
-						body: response
-					}, function(err, responseData) {
-						
-					});
+					// twilio.sendSms({
+					// 	to: req.body.From,
+					// 	from: '+12313664054',
+					// 	body: response
+					// }, function(err, responseData) {
+					//     res.end('success');
+					// });
 
 
 				},

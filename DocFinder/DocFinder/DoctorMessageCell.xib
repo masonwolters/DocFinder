@@ -1,60 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="g8g-yz-p8T" customClass="MessageCell" customModule="DocFinder" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="89" id="g8g-yz-p8T" customClass="MessageCell" customModule="DocFinder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8g-yz-p8T" id="zK9-1P-c97">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-eM-jp1">
-                        <rect key="frame" x="267" y="8" width="38" height="17"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-sW-hd6">
+                        <rect key="frame" x="104" y="26" width="207.5" height="53.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" ambiguous="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-eM-jp1">
+                        <rect key="frame" x="259" y="8" width="38" height="17"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-7l-DpA">
-                        <rect key="frame" x="45" y="27" width="260" height="41"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-7l-DpA">
+                        <rect key="frame" x="112" y="33" width="184.5" height="39.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:41 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-Xh-Wra">
-                        <rect key="frame" x="137" y="10" width="47" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="9:41 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-Xh-Wra">
+                        <rect key="frame" x="137" y="10" width="46.5" height="14.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" secondItem="zK9-1P-c97" secondAttribute="leading" constant="45" id="6jg-qu-8DF"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="top" secondItem="HNi-7l-DpA" secondAttribute="top" constant="-7" id="4mS-KQ-sDk"/>
+                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zK9-1P-c97" secondAttribute="leading" constant="60" id="6jg-qu-8DF"/>
                     <constraint firstItem="Bbp-eM-jp1" firstAttribute="top" secondItem="zK9-1P-c97" secondAttribute="top" constant="8" id="7sl-5A-xDF"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="centerX" secondItem="HNi-7l-DpA" secondAttribute="centerX" constant="7.5" id="MUZ-gD-2dA"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" constant="15" id="NnP-M4-xwO"/>
+                    <constraint firstItem="Bbp-eM-jp1" firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" id="Sih-Rn-6Iv"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="centerY" secondItem="HNi-7l-DpA" secondAttribute="centerY" id="U1C-yk-RFR"/>
                     <constraint firstAttribute="trailing" secondItem="8tK-Xh-Wra" secondAttribute="trailing" constant="15" id="UIm-VE-Uhi"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="leading" secondItem="HNi-7l-DpA" secondAttribute="leading" constant="-8" id="UfR-lO-q5W"/>
                     <constraint firstAttribute="centerX" secondItem="8tK-Xh-Wra" secondAttribute="centerX" id="big-PO-d3I"/>
                     <constraint firstAttribute="bottom" secondItem="HNi-7l-DpA" secondAttribute="bottom" constant="16" id="mDA-z2-Swn"/>
                     <constraint firstItem="HNi-7l-DpA" firstAttribute="top" secondItem="8tK-Xh-Wra" secondAttribute="bottom" constant="2" id="nsz-TB-6lS"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" constant="15" id="o8g-C0-Utl"/>
                     <constraint firstAttribute="trailing" secondItem="Bbp-eM-jp1" secondAttribute="trailing" constant="15" id="ofw-WB-Agc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6SI-sW-hd6" secondAttribute="trailing" id="qEQ-Yg-TbC"/>
                     <constraint firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" constant="15" id="rNd-jr-aP8"/>
+                    <constraint firstItem="6SI-sW-hd6" firstAttribute="bottom" secondItem="HNi-7l-DpA" secondAttribute="bottom" constant="7" id="tnd-0p-vmh"/>
+                    <constraint firstItem="Bbp-eM-jp1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8tK-Xh-Wra" secondAttribute="trailing" constant="8" id="uG2-bb-Av6"/>
                     <constraint firstItem="8tK-Xh-Wra" firstAttribute="baseline" secondItem="Bbp-eM-jp1" secondAttribute="baseline" id="z1y-h7-D3F"/>
-                    <constraint firstItem="HNi-7l-DpA" firstAttribute="top" secondItem="Bbp-eM-jp1" secondAttribute="bottom" constant="2" id="zgi-dz-dJx"/>
+                    <constraint firstItem="HNi-7l-DpA" firstAttribute="top" secondItem="Bbp-eM-jp1" secondAttribute="bottom" constant="8" id="zgi-dz-dJx"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="MUZ-gD-2dA"/>
+                        <exclude reference="NnP-M4-xwO"/>
+                        <exclude reference="U1C-yk-RFR"/>
                         <exclude reference="nsz-TB-6lS"/>
+                        <exclude reference="rNd-jr-aP8"/>
                         <exclude reference="UIm-VE-Uhi"/>
+                        <exclude reference="ofw-WB-Agc"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bubbleImage" destination="6SI-sW-hd6" id="DiC-ZH-Rbi"/>
                 <outlet property="dateLabel" destination="8tK-Xh-Wra" id="rT3-jI-LcJ"/>
                 <outlet property="messageLabel" destination="HNi-7l-DpA" id="aNb-ku-cqq"/>
                 <outlet property="senderLabel" destination="Bbp-eM-jp1" id="nyX-nQ-jP4"/>
             </connections>
-            <point key="canvasLocation" x="306" y="236.5"/>
+            <point key="canvasLocation" x="306" y="238.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -1,21 +1,55 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    <title>My ParseApp site</title>
-    <style>
-    body { font-family: Helvetica, Arial, sans-serif; }
-    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
-    h1 { font-size: 30px; margin: 0; }
-    p { margin: 40px 0; }
-    em { font-family: monospace; }
-    a { color: #5298fc; text-decoration: none; }
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
     </style>
+    <script src="//www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO4nLEFkpK6hq1ZqZ3ht4HXugLWiVUSRA">
+    </script>
+    <script type="text/javascript">
+      Parse.initialize("CdmE4AzemBZxYoogBlCCaEOrnv3w9E3s8jGqaHtn", "MRvVtJzJCpqwR2fhd9dWDHrJcjh3rpJUsP6oPDrF");
+
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        var query = new Parse.Query(Parse.Object.extend('Clinic'));
+
+        var lat;
+        var lng;
+        var radius;
+        var geoPoint = new Parse.GeoPoint({latitude: lat, longitude: lng});
+        // query.withinKilometers('location', geoPoint, radius);
+        query.find({
+          success: function(results) {
+            for (var i = 0; i < results.length; i++) {
+              var clinic = results[i];
+
+              var geoPoint = clinic.get('location');
+              var marker = new google.maps.Marker({
+                  position: {lat: geoPoint.latitude, lng: geoPoint.longitude},
+                  map: map,
+                  title: clinic.get('name')
+              });
+
+              marker.setMap(map);
+            }
+          },
+          error: function(error) {
+
+          }
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
   </head>
   <body>
-    <div>
-      <h1>Congratulations! You're already hosting with Parse.</h1>
-      <p>To get started, edit this file at <em>public/index.html</em> and start adding static content.</p>
-      <p>If you want something a bit more dynamic, delete this file and check out <a href="https://parse.com/docs/hosting_guide#webapp">our hosting docs</a>.</p>
-    </div>
+<div id="map-canvas"></div>
   </body>
 </html>

@@ -38,9 +38,11 @@ class ClinicMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Clinics"
+        
         LocationHelper.sharedInstance.getCurrentLocation({ (location: CLLocation) -> Void in
             self.zoomMap(location, radius: 200)
-        }, error: { (error: NSError) -> Void in
+            }, error: { (error: NSError) -> Void in
                 
         })
     }
@@ -68,7 +70,6 @@ class ClinicMapViewController: UIViewController, MKMapViewDelegate {
     //MARK: MKMapViewDelegate
     
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
-        println("region did change animated: \(animated)")
         self.loadClinicsInRegion(mapView.region)
     }
     

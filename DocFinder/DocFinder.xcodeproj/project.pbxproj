@@ -234,6 +234,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BAE1B0271A6B047B0087F1B7 /* ClinicMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */,
+				467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */,
+			);
+			name = ClinicMapViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */

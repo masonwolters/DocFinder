@@ -88,6 +88,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         keyboardMinY = view.bounds.height
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchMessages", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     // MARK: Table view
@@ -117,16 +118,24 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let doctor = message["doctor"] as? PFObject {
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.DoctorMessage.rawValue, forIndexPath: indexPath) as MessageCell
                 cell.senderLabel.text = doctor["name"] as? String
+                cell.bubbleImage.image = UIImage(named: "redBubble");
+                cell.messageLabel.textColor = UIColor.whiteColor()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.PatientMessage.rawValue, forIndexPath: indexPath) as MessageCell
                 cell.senderLabel.text = "Patient"
+                cell.bubbleImage.image = UIImage(named: "grayBubble")
                 return cell
             }
         }()
         
         cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
         cell.messageLabel.text = message["text"] as? String
+        if indexPath.row % 3 == 0 {
+            cell.dateLabel.alpha = 1.0
+        } else {
+            cell.dateLabel.alpha = 0.0
+        }
         
         return cell
     }

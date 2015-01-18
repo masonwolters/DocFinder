@@ -39,6 +39,7 @@ app.post('/receiveSMS', function(req, res) {
 });
 
 function handleResponseToNewIssue(req, res) {
+	console.log('handle response to new issue');
 	googlePlaces.coordinateForSearch(req.body.Body, {
 		success: function(place) {
 
@@ -50,6 +51,21 @@ function handleResponseToNewIssue(req, res) {
 					if (clinics.length > 0) {
 						var clinic = clinics[0];
 						response = textResponseForClinic(clinic, place);
+
+						if (response.length > 159) {
+							response = response.substr(0, 159);
+						}
+						twilio.sendSms({
+							to: req.body.From,
+							from: '+12313664054',
+							body: response
+						}, function(err, responseData) {
+							if (err) {
+								console.log(err);
+							}
+							console.log('sent twilio');
+						    res.end('success');
+						});
 
 						var geoPoint = new Parse.GeoPoint({latitude: place.lat, longitude: place.lng});
 
@@ -66,8 +82,6 @@ function handleResponseToNewIssue(req, res) {
 						issue.save(null, {
 							success: function(object) {
 								console.log('saved new issue');
-							    res.end('success');
-
 							},
 							error: function(error) {
 								console.log('error saving new issue');
@@ -86,15 +100,23 @@ function handleResponseToNewIssue(req, res) {
 					} else {
 						//No Clinics Found
 						response = 'No clinics found within radius of: ' + place.name;
+
+						twilio.sendSms({
+							to: req.body.From,
+							from: '+12313664054',
+							body: response
+						}, function(err, responseData) {
+						    res.end('success');
+						});
 					}
 
-					twilio.sendSms({
-						to: req.body.From,
-						from: '+12313664054',
-						body: response
-					}, function(err, responseData) {
-						
-					});
+					// twilio.sendSms({
+					// 	to: req.body.From,
+					// 	from: '+12313664054',
+					// 	body: response
+					// }, function(err, responseData) {
+					//     res.end('success');
+					// });
 
 
 				},
@@ -218,7 +240,7 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 function textResponseForClinic(clinic, gpInfo) {
 	//gpInfo is what is returned from googlePlaces.coordinateForSearch
 
-	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %>. It is <%= distance %> km away. Reply to message this clinic. Reply NEW to start over.';
+	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %> (<%= distance %> km away). Reply to message a doctor.';
 
 	var userGeoPoint = new Parse.GeoPoint({latitude: gpInfo.lat, longitude: gpInfo.lng});
 	var distance = userGeoPoint.kilometersTo(clinic.get('location'));

@@ -51,8 +51,10 @@ function handleResponseToNewIssue(req, res) {
 					if (clinics.length > 0) {
 						var clinic = clinics[0];
 						response = textResponseForClinic(clinic, place);
-						console.log('send twilio: '+response);
-						console.log(twilio);
+
+						if (response.length > 159) {
+							response = response.substr(0, 159);
+						}
 						twilio.sendSms({
 							to: req.body.From,
 							from: '+12313664054',

@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         tabBarController.delegate = self
         
         window.rootViewController = tabBarController
+        window.backgroundColor = UIColor.whiteColor()
         window.tintColor = UIColor(red: 207.0/255.0, green: 029.0/255.0, blue: 012/255.0, alpha: 1.0)
         window.makeKeyAndVisible()
         
@@ -89,6 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        if let issueID = userInfo["issueID"] as? String {
+            
+        }
         
         completionHandler(.NewData)
     }

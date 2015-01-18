@@ -28,9 +28,9 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
         installation["doctor"] = user
         installation.saveEventually()
         
-        dismissViewControllerAnimated(true) {
-            self.showDoctorViewController(user, animated: true)
-        }
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        showDoctorViewController(user, animated: false)
     }
     
     // MARK: DoctorViewController

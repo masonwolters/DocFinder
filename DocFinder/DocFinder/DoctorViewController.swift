@@ -13,7 +13,7 @@ protocol DoctorViewControllerDelegate: class {
     func doctorViewControllerDidLogout(doctorViewController: DoctorViewController)
 }
 
-class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ClinicViewControllerDelegate {
     
     // MARK: Initialization
     
@@ -31,6 +31,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         // Fetch
         
         fetchIssues()
+        fetchClinic()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -45,6 +46,23 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     let doctor: PFUser
     
+    var clinic: PFObject? {
+        didSet {
+            tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: Section.MeRow.Clinic.rawValue, inSection: Section.Me.rawValue)], withRowAnimation: .Fade)
+        }
+    }
+    
+    func fetchClinic() {
+        
+        let clinic = doctor["clinic"] as PFObject
+        
+        clinic.fetchIfNeededInBackgroundWithBlock { clinic, error in
+            if let clinic = clinic {
+                self.clinic = clinic
+            }
+        }
+    }
+    
     var issues: [PFObject]? {
         didSet {
             tableView.reloadSections(NSIndexSet(index: Section.Issues.rawValue), withRowAnimation: .Fade)
@@ -55,6 +73,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         let query = PFQuery(className: "Issue")
         query.whereKey("clinic", equalTo: doctor["clinic"])
+        query.whereKey("closed", notEqualTo: true)
         query.orderByDescending("date")
         query.includeKey("lastMessage")
         
@@ -99,6 +118,9 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     func logoutBarButtonItemAction() {
         
         PFUser.logOut()
+        
+        PFInstallation.currentInstallation().removeObjectForKey("doctor")
+        PFInstallation.currentInstallation().saveEventually()
         
         delegate?.doctorViewControllerDidLogout(self)
     }
@@ -155,12 +177,16 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             switch Section.MeRow(rawValue: indexPath.row)! {
             case .Doctor:
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Doctor.rawValue, forIndexPath: indexPath) as UITableViewCell
-                cell.textLabel!.text! = doctor["name"] as String
-                cell.detailTextLabel!.text! = doctor["specialty"] as String
+                cell.textLabel!.text = doctor["name"] as? String
+                cell.detailTextLabel!.text = doctor["specialty"] as? String
                 return cell
                 
             case .Clinic:
-                return tableView.dequeueReusableCellWithIdentifier(Cell.Clinic.rawValue, forIndexPath: indexPath) as UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Clinic.rawValue, forIndexPath: indexPath) as ClinicCell
+                cell.loading = clinic == nil
+                cell.detailTextLabel!.text = clinic?["name"] as? String ?? ""
+                cell.setNeedsLayout()
+                return cell
             }
             
         case .Issues:
@@ -208,7 +234,22 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return indexPath.section == Section.Me.rawValue || (indexPath.section == Section.Issues.rawValue && issues != nil)
+        
+        switch Section(rawValue: indexPath.section)! {
+            
+        case .Me:
+            
+            switch Section.MeRow(rawValue: indexPath.row)! {
+            case .Doctor:
+                return true
+                
+            case .Clinic:
+                return clinic != nil
+            }
+            
+        case .Issues:
+            return issues != nil
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -216,14 +257,36 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         switch Section(rawValue: indexPath.section)! {
             
         case .Me:
-            ()
+            
+            switch Section.MeRow(rawValue: indexPath.row)! {
+            case .Doctor:
+                ()
+                
+            case .Clinic:
+                showClinicViewController(clinic!, animated: true)
+            }
             
         case .Issues:
             showIssueViewController(issues![indexPath.row], animated: true)
         }
     }
     
-    // MARL: IssueViewController
+    // MARK: ClinicViewController
+    
+    func showClinicViewController(clinic: PFObject, animated: Bool) {
+        
+        let clinicViewController = ClinicViewController(clinic: clinic)
+        clinicViewController.delegate = self
+        
+        navigationController!.pushViewController(clinicViewController, animated: animated)
+    }
+    
+    func clinicViewControllerDidChangeClinicName(clinicViewController: ClinicViewController) {
+        
+        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Section.MeRow.Clinic.rawValue, inSection: Section.Me.rawValue)], withRowAnimation: .None)
+    }
+    
+    // MARK: IssueViewController
     
     func showIssueViewController(issue: PFObject, animated: Bool) {
         

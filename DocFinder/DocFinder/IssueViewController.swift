@@ -21,6 +21,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Navigation item
         
         navigationItem.title = issue["phoneNumber"] as? String
+        hidesBottomBarWhenPushed = true
         
         // Fetch
         
@@ -29,6 +30,10 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: Model
@@ -65,6 +70,8 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 85.0
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     // MARK: Table view
@@ -105,8 +112,25 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
         cell.messageLabel.text = message["text"] as? String
         
-        cell.setNeedsUpdateConstraints()
-        
         return cell
+    }
+    
+    // MARK: Keyboard
+    
+    @IBOutlet var bottomLayoutConstraint: NSLayoutConstraint!
+    
+    func keyboardWillChangeFrame(notification: NSNotification) {
+        
+        let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        let duration = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as NSNumber).doubleValue
+        
+        let localFrame = self.view.convertRect(frame, fromView: nil)
+        
+        bottomLayoutConstraint.constant = self.view.bounds.height - localFrame.minY
+        view.setNeedsUpdateConstraints()
+        
+        UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }

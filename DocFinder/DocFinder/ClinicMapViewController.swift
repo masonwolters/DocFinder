@@ -38,6 +38,8 @@ class ClinicMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Clinics"
+        
         LocationHelper.sharedInstance.getCurrentLocation({ (location: CLLocation) -> Void in
             self.zoomMap(location, radius: 200)
             }, error: { (error: NSError) -> Void in

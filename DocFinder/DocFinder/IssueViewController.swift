@@ -10,6 +10,7 @@ import UIKit
 
 protocol IssueViewControllerDelegate: class {
     
+    func issueViewControllerDidSendMessage(issueViewController: IssueViewController)
 }
 
 class IssueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -25,6 +26,8 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Navigation item
         
         navigationItem.title = issue["phoneNumber"] as? String
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .Plain, target: self, action: "detailsBarButtonItemAction")
         hidesBottomBarWhenPushed = true
         
         // Fetch
@@ -39,6 +42,10 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
+    // MARK: Delegate
+    
+    weak var delegate: IssueViewControllerDelegate?
     
     // MARK: Model
     
@@ -126,7 +133,6 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: Keyboard
     
-    @IBOutlet var bottomBarView: UIView!
     @IBOutlet var bottomLayoutConstraint: NSLayoutConstraint!
     
     var keyboardMinY: CGFloat = 0.0
@@ -209,6 +215,8 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.issue["date"] = date
                     self.issue.saveInBackgroundWithBlock({ success, error in })
                     
+                    self.delegate?.issueViewControllerDidSendMessage(self)
+                    
                     let textMessage = (PFUser.currentUser()["name"] as String) + ": " + text
                     
                     PFCloud.callFunctionInBackground("replyToIssue", withParameters: ["phoneNumber": self.issue["phoneNumber"], "message": textMessage]) { (result: AnyObject!, error: NSError!) in
@@ -217,5 +225,14 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
+    }
+    
+    // MARK: Details view controller
+    
+    func detailsBarButtonItemAction() {
+        
+        let detailsViewController = IssueDetailsViewController(issue: issue)
+        
+        navigationController!.pushViewController(detailsViewController, animated: true)
     }
 }

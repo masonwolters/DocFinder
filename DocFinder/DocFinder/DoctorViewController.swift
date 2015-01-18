@@ -13,7 +13,7 @@ protocol DoctorViewControllerDelegate: class {
     func doctorViewControllerDidLogout(doctorViewController: DoctorViewController)
 }
 
-class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ClinicViewControllerDelegate {
+class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ClinicViewControllerDelegate, IssueViewControllerDelegate {
     
     // MARK: Initialization
     
@@ -194,12 +194,12 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             if let issues = issues {
                 
                 let issue = issues[indexPath.row]
-                let message = issue["lastMessage"] as PFObject
+                let message = issue["lastMessage"] as? PFObject
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Issue.rawValue, forIndexPath: indexPath) as IssueCell
                 cell.patientNumberLabel.text = issue["phoneNumber"] as? String
-                cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
-                cell.messageLabel.text = message["text"] as? String
+                cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(issue["date"] as NSDate)
+                cell.messageLabel.text = (message?["text"] as? String) ?? ""
                 return cell
                 
             } else {
@@ -295,6 +295,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         func pushIssueViewController() {
             
             let issueViewController = IssueViewController(issue: issue)
+            issueViewController.delegate = self
             
             navigationController!.pushViewController(issueViewController, animated: animated)
             
@@ -305,7 +306,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             
             if issueViewController.issue.objectId != issue.objectId {
                 
-                navigationController!.popViewControllerAnimated(false)
+                navigationController!.popToViewController(self, animated: false)
                 pushIssueViewController()
             }
             
@@ -313,6 +314,11 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             
             pushIssueViewController()
         }
+    }
+    
+    func issueViewControllerDidSendMessage(issueViewController: IssueViewController) {
+        
+        tableView.reloadSections(NSIndexSet(index: Section.Issues.rawValue), withRowAnimation: .None)
     }
     
     //MARK: InfoViewController

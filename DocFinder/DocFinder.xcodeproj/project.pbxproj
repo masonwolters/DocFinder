@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4623B1841A6BC20A003AF585 /* IssueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4623B1831A6BC20A003AF585 /* IssueDetailsViewController.swift */; };
+		4623B1861A6BC217003AF585 /* IssueDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4623B1851A6BC217003AF585 /* IssueDetailsViewController.xib */; };
 		467AEDD81A6AC8ED0028384C /* ClinicMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */; };
 		467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */; };
 		467AEDDC1A6ACE440028384C /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDDB1A6ACE440028384C /* DoctorViewController.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4623B1831A6BC20A003AF585 /* IssueDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueDetailsViewController.swift; sourceTree = "<group>"; };
+		4623B1851A6BC217003AF585 /* IssueDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueDetailsViewController.xib; sourceTree = "<group>"; };
 		467AEDD71A6AC8ED0028384C /* ClinicMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClinicMapViewController.xib; sourceTree = "<group>"; };
 		467AEDD91A6AC8F90028384C /* ClinicMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicMapViewController.swift; sourceTree = "<group>"; };
 		467AEDDB1A6ACE440028384C /* DoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4623B1871A6BC21C003AF585 /* IssueDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4623B1831A6BC20A003AF585 /* IssueDetailsViewController.swift */,
+				4623B1851A6BC217003AF585 /* IssueDetailsViewController.xib */,
+			);
+			name = IssueDetailsViewController;
+			sourceTree = "<group>";
+		};
+		4623B1881A6BC3BF003AF585 /* DoctorInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BAF00BD11A6B9F830003912E /* DoctorInfoViewController.swift */,
+				BAF00BD31A6BA0200003912E /* DoctorInfoViewController.xib */,
+				BAF00BD91A6BAAA10003912E /* EditAttributeCell.swift */,
+				BAF00BDA1A6BAAA10003912E /* EditAttributeCell.xib */,
+			);
+			name = DoctorInfoViewController;
+			sourceTree = "<group>";
+		};
 		467AEDE51A6ADDAD0028384C /* DoctorViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,10 +158,6 @@
 				467AEDE31A6AD6F00028384C /* ClinicCell.xib */,
 				467AEDF31A6AFBA40028384C /* IssueCell.swift */,
 				467AEDDF1A6ACF550028384C /* IssueCell.xib */,
-				BAF00BD11A6B9F830003912E /* DoctorInfoViewController.swift */,
-				BAF00BD31A6BA0200003912E /* DoctorInfoViewController.xib */,
-				BAF00BD91A6BAAA10003912E /* EditAttributeCell.swift */,
-				BAF00BDA1A6BAAA10003912E /* EditAttributeCell.xib */,
 			);
 			name = DoctorViewController;
 			sourceTree = "<group>";
@@ -226,8 +246,10 @@
 				467AEDFD1A6B10460028384C /* Model */,
 				467AEDF21A6AF08F0028384C /* DoctorLogInViewController */,
 				467AEDE51A6ADDAD0028384C /* DoctorViewController */,
+				4623B1881A6BC3BF003AF585 /* DoctorInfoViewController */,
 				46A57CC31A6B63AA0019AE8E /* ClinicViewController */,
 				467AEDF81A6B10000028384C /* IssueViewController */,
+				4623B1871A6BC21C003AF585 /* IssueDetailsViewController */,
 				467AEDF71A6B0FF40028384C /* ClinicMapViewController */,
 				BAC0B0B01A6ACFC100404F15 /* LocationHelper.swift */,
 				467AEDE11A6AD1E50028384C /* LoadingCell.xib */,
@@ -364,6 +386,7 @@
 				46A57CC51A6B63C70019AE8E /* ClinicViewController.xib in Resources */,
 				BAF00BD41A6BA0200003912E /* DoctorInfoViewController.xib in Resources */,
 				467AEDD81A6AC8ED0028384C /* ClinicMapViewController.xib in Resources */,
+				4623B1861A6BC217003AF585 /* IssueDetailsViewController.xib in Resources */,
 				467AEDE01A6ACF550028384C /* IssueCell.xib in Resources */,
 				BAF00BDC1A6BAAA10003912E /* EditAttributeCell.xib in Resources */,
 			);
@@ -420,6 +443,7 @@
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46A57CC21A6B63A50019AE8E /* ClinicViewController.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
+				4623B1841A6BC20A003AF585 /* IssueDetailsViewController.swift in Sources */,
 				467AEE031A6B14350028384C /* MessageCell.swift in Sources */,
 				467AEDF61A6B0DFB0028384C /* MessageDateFormatter.swift in Sources */,
 				BAF00BDB1A6BAAA10003912E /* EditAttributeCell.swift in Sources */,

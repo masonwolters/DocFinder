@@ -47,8 +47,6 @@ class ClinicViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Model
     
-    let geocoder = CLGeocoder()
-    
     let clinic: PFObject
     
     let annotation = MKPointAnnotation()

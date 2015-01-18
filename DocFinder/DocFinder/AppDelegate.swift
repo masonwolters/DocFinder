@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     let tabBarController = UITabBarController()
     
     let doctorNavigationController = UINavigationController()
-    let doctorLogInViewController = DoctorLogInViewController(nibName: "DoctorLogInViewController", bundle: nil)
+    let doctorLogInViewController = DoctorLogInViewController()
     
     let clinicNavigationController = UINavigationController()
     let clinicMapViewController = ClinicMapViewController(nibName: "ClinicMapViewController", bundle: nil)

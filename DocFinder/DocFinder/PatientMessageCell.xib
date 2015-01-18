@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l8s-kq-Alm">
-                        <rect key="frame" x="8" y="26" width="207.5" height="61.5"/>
+                        <rect key="frame" x="8" y="26" width="207.5" height="69.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-Te-3kc">
                         <rect key="frame" x="23" y="8" width="38" height="17"/>
@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-iB-oOf">
-                        <rect key="frame" x="23" y="33" width="184.5" height="47.5"/>
+                        <rect key="frame" x="23" y="33" width="184.5" height="55.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -51,7 +51,7 @@
                     <constraint firstItem="DQB-Te-3kc" firstAttribute="top" secondItem="LxJ-lh-1wC" secondAttribute="top" constant="8" id="er8-C0-0uV"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="leading" secondItem="l8s-kq-Alm" secondAttribute="leading" constant="15" id="hdF-Pa-Ho5"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="leading" secondItem="l8s-kq-Alm" secondAttribute="leading" constant="15" id="jrl-L4-f86"/>
-                    <constraint firstAttribute="bottom" secondItem="fzg-iB-oOf" secondAttribute="bottom" constant="16" id="o52-Bf-gJR"/>
+                    <constraint firstAttribute="bottom" secondItem="fzg-iB-oOf" secondAttribute="bottom" constant="8" id="o52-Bf-gJR"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="top" secondItem="l8s-kq-Alm" secondAttribute="top" constant="7" id="onD-Ly-fOq"/>
                     <constraint firstItem="dhY-u8-9d5" firstAttribute="leading" secondItem="LxJ-lh-1wC" secondAttribute="leading" constant="15" id="sql-pP-mf3"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="leading" secondItem="l8s-kq-Alm" secondAttribute="trailing" constant="-8" id="uAF-iu-1Px"/>

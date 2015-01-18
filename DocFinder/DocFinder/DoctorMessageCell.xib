@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-sW-hd6">
-                        <rect key="frame" x="104" y="26" width="207.5" height="81.5"/>
+                        <rect key="frame" x="104" y="26" width="207.5" height="89.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-eM-jp1">
                         <rect key="frame" x="259" y="8" width="38" height="17"/>
@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-7l-DpA">
-                        <rect key="frame" x="112" y="33" width="184.5" height="67.5"/>
+                        <rect key="frame" x="112" y="33" width="184.5" height="75.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,7 +45,7 @@
                     <constraint firstAttribute="trailing" secondItem="8tK-Xh-Wra" secondAttribute="trailing" constant="15" id="UIm-VE-Uhi"/>
                     <constraint firstItem="6SI-sW-hd6" firstAttribute="leading" secondItem="HNi-7l-DpA" secondAttribute="leading" constant="-8" id="UfR-lO-q5W"/>
                     <constraint firstAttribute="centerX" secondItem="8tK-Xh-Wra" secondAttribute="centerX" id="big-PO-d3I"/>
-                    <constraint firstAttribute="bottom" secondItem="HNi-7l-DpA" secondAttribute="bottom" constant="16" id="mDA-z2-Swn"/>
+                    <constraint firstAttribute="bottom" secondItem="HNi-7l-DpA" secondAttribute="bottom" constant="8" id="mDA-z2-Swn"/>
                     <constraint firstItem="HNi-7l-DpA" firstAttribute="top" secondItem="8tK-Xh-Wra" secondAttribute="bottom" constant="2" id="nsz-TB-6lS"/>
                     <constraint firstItem="6SI-sW-hd6" firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" constant="15" id="o8g-C0-Utl"/>
                     <constraint firstAttribute="trailing" secondItem="Bbp-eM-jp1" secondAttribute="trailing" constant="15" id="ofw-WB-Agc"/>

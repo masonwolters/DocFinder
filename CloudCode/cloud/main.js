@@ -52,8 +52,8 @@ function handleResponseToNewIssue(req, res) {
 						var clinic = clinics[0];
 						response = textResponseForClinic(clinic, place);
 						console.log('send twilio: '+response);
-
-						twilio.messages.create({
+						console.log(twilio);
+						twilio.sendSms({
 							to: req.body.From,
 							from: '+12313664054',
 							body: response
@@ -61,6 +61,7 @@ function handleResponseToNewIssue(req, res) {
 							if (err) {
 								console.log(err);
 							}
+							console.log('sent twilio');
 						    res.end('success');
 						});
 
@@ -237,7 +238,7 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 function textResponseForClinic(clinic, gpInfo) {
 	//gpInfo is what is returned from googlePlaces.coordinateForSearch
 
-	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %>. It is <%= distance %> km away. Reply to message this clinic. Reply NEW to start over.';
+	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %> (<%= distance %> km away). Reply to message a doctor.';
 
 	var userGeoPoint = new Parse.GeoPoint({latitude: gpInfo.lat, longitude: gpInfo.lng});
 	var distance = userGeoPoint.kilometersTo(clinic.get('location'));

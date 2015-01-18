@@ -64,6 +64,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.registerNib(Cell.PatientMessage.nib, forCellReuseIdentifier: Cell.PatientMessage.rawValue)
         
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 85.0
     }
     
     // MARK: Table view
@@ -95,7 +96,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.senderLabel.text = doctor["name"] as? String
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.DoctorMessage.rawValue, forIndexPath: indexPath) as MessageCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.PatientMessage.rawValue, forIndexPath: indexPath) as MessageCell
                 cell.senderLabel.text = "Patient"
                 return cell
             }

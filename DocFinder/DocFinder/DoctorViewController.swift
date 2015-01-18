@@ -76,6 +76,24 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.registerNib(Cell.Loading.nib, forCellReuseIdentifier: Cell.Loading.rawValue)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            
+            transitionCoordinator()?.animateAlongsideTransition({ context in
+                
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                
+                }, completion: { context in
+                    
+                    if context.isCancelled() {
+                        self.tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+                    }
+            })
+        }
+    }
+    
     // MARK: Logout
     
     func logoutBarButtonItemAction() {

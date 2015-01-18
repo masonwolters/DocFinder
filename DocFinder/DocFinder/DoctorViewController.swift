@@ -13,7 +13,7 @@ protocol DoctorViewControllerDelegate: class {
     func doctorViewControllerDidLogout(doctorViewController: DoctorViewController)
 }
 
-class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ClinicViewControllerDelegate, IssueViewControllerDelegate {
+class DoctorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DoctorInfoViewControllerDelegate, ClinicViewControllerDelegate, IssueViewControllerDelegate {
     
     // MARK: Initialization
     
@@ -321,11 +321,18 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.reloadSections(NSIndexSet(index: Section.Issues.rawValue), withRowAnimation: .None)
     }
     
-    //MARK: InfoViewController
+    // MARK: InfoViewController
     
     func showDoctorInfoViewController() {
+        
         let doctorInfoViewController = DoctorInfoViewController(doctor: PFUser.currentUser())
+        doctorInfoViewController.delegate = self
         
         navigationController!.pushViewController(doctorInfoViewController, animated: true)
+    }
+    
+    func doctorInfoViewControllerDidChangeAttribute(doctorInfoViewController: DoctorInfoViewController) {
+        
+        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Section.MeRow.Doctor.rawValue, inSection: Section.Me.rawValue)], withRowAnimation: .None)
     }
 }

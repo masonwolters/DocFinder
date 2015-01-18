@@ -12,14 +12,14 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8g-yz-p8T" id="zK9-1P-c97">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-eM-jp1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-eM-jp1">
                         <rect key="frame" x="267" y="8" width="38" height="17"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-7l-DpA">
-                        <rect key="frame" x="15" y="27" width="290" height="41"/>
+                        <rect key="frame" x="45" y="27" width="260" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -31,7 +31,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" secondItem="zK9-1P-c97" secondAttribute="leading" constant="15" id="6jg-qu-8DF"/>
+                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" secondItem="zK9-1P-c97" secondAttribute="leading" constant="45" id="6jg-qu-8DF"/>
                     <constraint firstItem="Bbp-eM-jp1" firstAttribute="top" secondItem="zK9-1P-c97" secondAttribute="top" constant="8" id="7sl-5A-xDF"/>
                     <constraint firstAttribute="trailing" secondItem="8tK-Xh-Wra" secondAttribute="trailing" constant="15" id="UIm-VE-Uhi"/>
                     <constraint firstAttribute="centerX" secondItem="8tK-Xh-Wra" secondAttribute="centerX" id="big-PO-d3I"/>
@@ -40,9 +40,11 @@
                     <constraint firstAttribute="trailing" secondItem="Bbp-eM-jp1" secondAttribute="trailing" constant="15" id="ofw-WB-Agc"/>
                     <constraint firstAttribute="trailing" secondItem="HNi-7l-DpA" secondAttribute="trailing" constant="15" id="rNd-jr-aP8"/>
                     <constraint firstItem="8tK-Xh-Wra" firstAttribute="baseline" secondItem="Bbp-eM-jp1" secondAttribute="baseline" id="z1y-h7-D3F"/>
+                    <constraint firstItem="HNi-7l-DpA" firstAttribute="top" secondItem="Bbp-eM-jp1" secondAttribute="bottom" constant="2" id="zgi-dz-dJx"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="nsz-TB-6lS"/>
                         <exclude reference="UIm-VE-Uhi"/>
                     </mask>
                 </variation>

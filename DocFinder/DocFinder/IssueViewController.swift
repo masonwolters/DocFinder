@@ -45,7 +45,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let query = PFQuery(className: "Message")
         query.whereKey("issue", equalTo: issue)
-        query.orderByDescending("date")
+        query.orderByAscending("date")
         query.includeKey("doctor")
         
         query.findObjectsInBackgroundWithBlock { objects, error in
@@ -64,6 +64,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.registerNib(Cell.PatientMessage.nib, forCellReuseIdentifier: Cell.PatientMessage.rawValue)
         
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 85.0
     }
     
     // MARK: Table view
@@ -103,6 +104,8 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
         cell.messageLabel.text = message["text"] as? String
+        
+        cell.setNeedsUpdateConstraints()
         
         return cell
     }

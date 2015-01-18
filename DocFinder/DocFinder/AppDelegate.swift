@@ -79,10 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         return tabBarController.selectedViewController != viewController
     }
     
-    // MARK: User notifications
-    
-    
-    
     // MARK: Remote notifications
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

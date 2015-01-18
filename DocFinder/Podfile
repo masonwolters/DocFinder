@@ -5,4 +5,3 @@ inhibit_all_warnings!
 pod 'TwilioSDK', '~>1.2'
 pod 'Parse'
 pod 'ParseUI'
-pod 'JSQMessagesViewController'

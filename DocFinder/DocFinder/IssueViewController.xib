@@ -6,8 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueViewController" customModule="DocFinder" customModuleProvider="target">
             <connections>
+                <outlet property="bottomBarView" destination="Ptw-in-1Cg" id="AQF-iQ-kuC"/>
                 <outlet property="bottomLayoutConstraint" destination="eKU-BD-W70" id="aAu-n3-u4O"/>
+                <outlet property="sendButton" destination="hqd-Dp-ZGx" id="GU7-iE-vzD"/>
                 <outlet property="tableView" destination="7nh-s4-o5j" id="nDM-2c-f4l"/>
+                <outlet property="textField" destination="KhA-wA-aiV" id="dAa-LV-cNl"/>
                 <outlet property="view" destination="TBO-gl-mhQ" id="Qpf-JK-ZWn"/>
             </connections>
         </placeholder>
@@ -33,7 +36,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-wA-aiV">
                                 <rect key="frame" x="8" y="7" width="539" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged" destination="-1" eventType="editingChanged" id="IGr-ew-kP4"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqd-Dp-ZGx">
                                 <rect key="frame" x="555" y="7" width="37" height="30"/>
@@ -41,6 +47,9 @@
                                 <state key="normal" title="Send">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendButtonTouchUpInside" destination="-1" eventType="touchUpInside" id="1Mq-Ei-u1z"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

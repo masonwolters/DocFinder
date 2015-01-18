@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol IssueViewControllerDelegate: class {
+    
+}
+
 class IssueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Initialization
@@ -43,6 +47,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
     var messages: [PFObject]? {
         didSet {
             tableView.reloadData()
+            scrollTableViewToBottom()
         }
     }
     
@@ -70,6 +75,10 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 85.0
+        
+        updateTableViewBottomInset()
+        updateSendButtonEnabled()
+        keyboardMinY = view.bounds.height
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
@@ -117,7 +126,10 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: Keyboard
     
+    @IBOutlet var bottomBarView: UIView!
     @IBOutlet var bottomLayoutConstraint: NSLayoutConstraint!
+    
+    var keyboardMinY: CGFloat = 0.0
     
     func keyboardWillChangeFrame(notification: NSNotification) {
         
@@ -125,12 +137,85 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         let duration = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as NSNumber).doubleValue
         
         let localFrame = self.view.convertRect(frame, fromView: nil)
+        keyboardMinY = localFrame.minY
         
-        bottomLayoutConstraint.constant = self.view.bounds.height - localFrame.minY
+        let distance = self.view.bounds.height - keyboardMinY
+        
+        bottomLayoutConstraint.constant = distance
         view.setNeedsUpdateConstraints()
         
         UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
             self.view.layoutIfNeeded()
+            self.bottomInset = distance + 44.0
+            self.scrollTableViewToBottom()
         }, completion: nil)
+    }
+    
+    // MARK: Bottom inset
+    
+    var bottomInset: CGFloat = 44.0 {
+        didSet {
+            updateTableViewBottomInset()
+        }
+    }
+    
+    func updateTableViewBottomInset() {
+        tableView.contentInset.bottom = bottomInset
+        tableView.scrollIndicatorInsets = tableView.contentInset
+    }
+    
+    func scrollTableViewToBottom() {
+        tableView.contentOffset = CGPoint(x: 0.0, y: 44.0 + self.tableView.contentSize.height - keyboardMinY)
+    }
+    
+    // MARK: Text field
+    
+    @IBOutlet var textField: UITextField!
+    
+    @IBAction func textFieldEditingChanged() {
+        updateSendButtonEnabled()
+    }
+    
+    // MARK: Send button
+    
+    @IBOutlet var sendButton: UIButton!
+    
+    func updateSendButtonEnabled() {
+        sendButton.enabled = !textField.text.isEmpty
+    }
+    
+    @IBAction func sendButtonTouchUpInside() {
+        
+        let text = textField.text
+        textField.text = ""
+        
+        updateSendButtonEnabled()
+        
+        let date = NSDate()
+        
+        let message = PFObject(className: "Message")
+        message["date"] = date
+        message["text"] = text
+        message["issue"] = issue
+        message["doctor"] = PFUser.currentUser()
+        message.saveInBackgroundWithBlock { success, error in
+            if success {
+                
+                self.messages! += [message]
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                    self.issue["lastMessage"] = message
+                    self.issue["date"] = date
+                    self.issue.saveInBackgroundWithBlock({ success, error in })
+                    
+                    let textMessage = (PFUser.currentUser()["name"] as String) + ": " + text
+                    
+                    PFCloud.callFunctionInBackground("replyToIssue", withParameters: ["phoneNumber": self.issue["phoneNumber"], "message": textMessage]) { (result: AnyObject!, error: NSError!) in
+                        
+                    }
+                }
+            }
+        }
     }
 }

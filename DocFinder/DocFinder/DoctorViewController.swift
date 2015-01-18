@@ -303,10 +303,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         if let issueViewController = issueViewController {
             
-            if issueViewController.issue.objectId == issue.objectId {
-                issueViewController.fetchMessages()
-                
-            } else {
+            if issueViewController.issue.objectId != issue.objectId {
                 
                 navigationController!.popViewControllerAnimated(false)
                 pushIssueViewController()

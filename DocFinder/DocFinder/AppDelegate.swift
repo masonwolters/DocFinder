@@ -95,6 +95,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         if let issueID = userInfo["issueID"] as? String {
             if let doctorViewController = doctorLogInViewController.doctorViewController {
+                
+                doctorViewController.fetchIssues()
+                
+                if let issueViewController = doctorViewController.issueViewController {
+                    if issueViewController.issue.objectId == issueID {
+                        issueViewController.fetchMessages()
+                    }
+                }
+                
                 if application.applicationState != .Active {
                     
                     tabBarController.selectedIndex = 0

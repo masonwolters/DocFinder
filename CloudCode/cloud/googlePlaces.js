@@ -31,3 +31,28 @@ exports.coordinateForSearch = function(searchText, callbacks) {
 	});
 
 } 
+
+var reverseGeocodeBaseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBO4nLEFkpK6hq1ZqZ3ht4HXugLWiVUSRA';
+
+exports.reverseGeocode = function(req, res) {
+	//params
+		//location - PFGeoPoint
+
+	Parse.Cloud.httpRequest({
+		url: reverseGeocodeBaseUrl + '&latlng=' + req.params.location.latitude + ',' + req.params.location.longitude,
+		success: function(response) {
+
+			if (response.data.results.length > 0) {
+				var result = response.data.results[0];
+				res.success(result.formatted_address);
+			} else {
+				res.error('No Results');
+			}
+
+		},
+		error: function(error) {
+			res.error('error');
+		}
+	})
+
+}

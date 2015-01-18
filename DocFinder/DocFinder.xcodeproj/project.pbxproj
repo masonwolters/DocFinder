@@ -16,6 +16,7 @@
 		467AEDE41A6AD6F00028384C /* ClinicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDE31A6AD6F00028384C /* ClinicCell.xib */; };
 		467AEDF11A6AE7EC0028384C /* DoctorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467AEDF01A6AE7EC0028384C /* DoctorCell.xib */; };
 		467AEDF41A6AFBA40028384C /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDF31A6AFBA40028384C /* IssueCell.swift */; };
+		467AEDF61A6B0DFB0028384C /* MessageDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AEDF51A6B0DFB0028384C /* MessageDateFormatter.swift */; };
 		46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */; };
 		46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */; };
 		46AA71B41A6A3DE90032E710 /* DoctorLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AA71B31A6A3DE90032E710 /* DoctorLogInViewController.xib */; };
@@ -48,6 +49,7 @@
 		467AEDE31A6AD6F00028384C /* ClinicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClinicCell.xib; sourceTree = "<group>"; };
 		467AEDF01A6AE7EC0028384C /* DoctorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorCell.xib; sourceTree = "<group>"; };
 		467AEDF31A6AFBA40028384C /* IssueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
+		467AEDF51A6B0DFB0028384C /* MessageDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDateFormatter.swift; sourceTree = "<group>"; };
 		46AA71AC1A6A3AD20032E710 /* DocFinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DocFinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		46AA71AD1A6A3AD20032E710 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AA71B11A6A3DA40032E710 /* DoctorLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorLogInViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				467AEDDB1A6ACE440028384C /* DoctorViewController.swift */,
+				467AEDF51A6B0DFB0028384C /* MessageDateFormatter.swift */,
 				467AEDDD1A6ACE520028384C /* DoctorViewController.xib */,
 				467AEDF01A6AE7EC0028384C /* DoctorCell.xib */,
 				467AEDE31A6AD6F00028384C /* ClinicCell.xib */,
@@ -349,6 +352,7 @@
 				BAC0B0B11A6ACFC100404F15 /* LocationHelper.swift in Sources */,
 				46AA71AE1A6A3AD20032E710 /* AppDelegate.swift in Sources */,
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
+				467AEDF61A6B0DFB0028384C /* MessageDateFormatter.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,
 				467AEDDC1A6ACE440028384C /* DoctorViewController.swift in Sources */,
 				467AEDF41A6AFBA40028384C /* IssueCell.swift in Sources */,

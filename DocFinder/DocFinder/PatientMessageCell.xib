@@ -19,7 +19,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-iB-oOf">
-                        <rect key="frame" x="15" y="27" width="290" height="41"/>
+                        <rect key="frame" x="15" y="27" width="260" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -34,7 +34,7 @@
                     <constraint firstAttribute="trailing" secondItem="DQB-Te-3kc" secondAttribute="trailing" constant="15" id="0xF-6e-zwO"/>
                     <constraint firstAttribute="trailing" secondItem="dhY-u8-9d5" secondAttribute="trailing" constant="15" id="3Df-VW-pag"/>
                     <constraint firstAttribute="centerX" secondItem="dhY-u8-9d5" secondAttribute="centerX" id="5Ko-mO-kGp"/>
-                    <constraint firstAttribute="trailing" secondItem="fzg-iB-oOf" secondAttribute="trailing" constant="15" id="B6a-jI-np6"/>
+                    <constraint firstAttribute="trailing" secondItem="fzg-iB-oOf" secondAttribute="trailing" constant="45" id="B6a-jI-np6"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="top" secondItem="dhY-u8-9d5" secondAttribute="bottom" constant="2" id="CAV-H2-UR8"/>
                     <constraint firstItem="DQB-Te-3kc" firstAttribute="leading" secondItem="LxJ-lh-1wC" secondAttribute="leading" constant="15" id="Gkt-Xx-NDH"/>
                     <constraint firstItem="fzg-iB-oOf" firstAttribute="leading" secondItem="LxJ-lh-1wC" secondAttribute="leading" constant="15" id="KQy-9u-6cf"/>

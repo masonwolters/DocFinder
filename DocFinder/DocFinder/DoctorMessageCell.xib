@@ -19,7 +19,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-7l-DpA">
-                        <rect key="frame" x="15" y="27" width="290" height="41"/>
+                        <rect key="frame" x="45" y="27" width="260" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -31,7 +31,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" secondItem="zK9-1P-c97" secondAttribute="leading" constant="15" id="6jg-qu-8DF"/>
+                    <constraint firstItem="HNi-7l-DpA" firstAttribute="leading" secondItem="zK9-1P-c97" secondAttribute="leading" constant="45" id="6jg-qu-8DF"/>
                     <constraint firstItem="Bbp-eM-jp1" firstAttribute="top" secondItem="zK9-1P-c97" secondAttribute="top" constant="8" id="7sl-5A-xDF"/>
                     <constraint firstAttribute="trailing" secondItem="8tK-Xh-Wra" secondAttribute="trailing" constant="15" id="UIm-VE-Uhi"/>
                     <constraint firstAttribute="centerX" secondItem="8tK-Xh-Wra" secondAttribute="centerX" id="big-PO-d3I"/>

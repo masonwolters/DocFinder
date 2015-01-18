@@ -45,7 +45,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let query = PFQuery(className: "Message")
         query.whereKey("issue", equalTo: issue)
-        query.orderByDescending("date")
+        query.orderByAscending("date")
         query.includeKey("doctor")
         
         query.findObjectsInBackgroundWithBlock { objects, error in
@@ -95,7 +95,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.senderLabel.text = doctor["name"] as? String
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.PatientMessage.rawValue, forIndexPath: indexPath) as MessageCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(Cell.DoctorMessage.rawValue, forIndexPath: indexPath) as MessageCell
                 cell.senderLabel.text = "Patient"
                 return cell
             }
@@ -103,6 +103,8 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
         cell.messageLabel.text = message["text"] as? String
+        
+        cell.setNeedsUpdateConstraints()
         
         return cell
     }

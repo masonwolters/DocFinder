@@ -53,6 +53,7 @@ function handleResponseToNewIssue(req, res) {
 						issue.set('location', geoPoint);
 						issue.set('locationName', place.name);
 						issue.set('phoneNumber', req.body.From);
+						issue.set('date', new Date());
 						console.log('should save issue');
 						issue.save(null, {
 							success: function(object) {
@@ -66,14 +67,14 @@ function handleResponseToNewIssue(req, res) {
 							}
 						});
 
-						pushToClinic(clinic, 'New issue', {
-							success: function() {
+						// pushToClinic(clinic, 'New issue', {
+						// 	success: function() {
 
-							},
-							error: function(error) {
+						// 	},
+						// 	error: function(error) {
 
-							}
-						});
+						// 	}
+						// });
 					} else {
 						//No Clinics Found
 						response = 'No clinics found within radius of: ' + place.name;
@@ -113,12 +114,14 @@ function handleResponseToExistingIssue(req, res, issue) {
 	message.set('text', req.body.Body);
 	message.set('issue', issue);
 	message.set('phoneNumber', req.body.From);
+	message.set('date', new Date());
 	message.save(null, {
 		success: function(savedMessage) {
 			issue.set('lastMessage', savedMessage);
+			issue.set('date', new Date());
 			issue.save();
 
-			pushToClinic(issue.get('clinic'), 'Push Message', {
+			pushToClinic(issue.get('clinic'), req.body.Body, {
 				success: function() {
 
 				},

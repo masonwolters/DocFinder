@@ -70,7 +70,7 @@ class ClinicViewController: UIViewController, MKMapViewDelegate {
             if let geoPoint = geoPoint {
                 
                 self.clinic["location"] = geoPoint
-                self.clinic.saveEventually()
+                self.updateLocationName()
                 
                 self.updateAnnotationWithGeoPoint(geoPoint)
                 self.zoomMap(true)
@@ -124,7 +124,7 @@ class ClinicViewController: UIViewController, MKMapViewDelegate {
             
             let geoPoint = PFGeoPoint(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             clinic["location"] = geoPoint
-            clinic.saveEventually()
+            updateLocationName()
         }
     }
     
@@ -158,5 +158,17 @@ class ClinicViewController: UIViewController, MKMapViewDelegate {
         })
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: Get location name
+    
+    func updateLocationName() {
+        
+        PFCloud.callFunctionInBackground("reverseGeocode", withParameters: ["location": clinic["location"]]) { (result: AnyObject!, error: NSError!) in
+            if let locationName = result as? String {
+                self.clinic["locationName"] = locationName
+                self.clinic.saveEventually()
+            }
+        }
     }
 }

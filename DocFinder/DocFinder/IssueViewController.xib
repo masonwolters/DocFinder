@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueViewController" customModule="DocFinder" customModuleProvider="target">
             <connections>
+                <outlet property="bottomLayoutConstraint" destination="eKU-BD-W70" id="aAu-n3-u4O"/>
                 <outlet property="tableView" destination="7nh-s4-o5j" id="nDM-2c-f4l"/>
                 <outlet property="view" destination="TBO-gl-mhQ" id="Qpf-JK-ZWn"/>
             </connections>
@@ -15,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-s4-o5j">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-s4-o5j">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -23,6 +24,38 @@
                         <outlet property="delegate" destination="-1" id="BbW-Sv-yMz"/>
                     </connections>
                 </tableView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-rT-vQq">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ptw-in-1Cg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-wA-aiV">
+                                <rect key="frame" x="8" y="7" width="539" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqd-Dp-ZGx">
+                                <rect key="frame" x="555" y="7" width="37" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="hqd-Dp-ZGx" secondAttribute="centerY" id="Hgm-pV-hq0"/>
+                            <constraint firstAttribute="centerY" secondItem="KhA-wA-aiV" secondAttribute="centerY" id="NFJ-eo-TtV"/>
+                            <constraint firstItem="KhA-wA-aiV" firstAttribute="leading" secondItem="Ptw-in-1Cg" secondAttribute="leading" constant="8" id="Ql6-0m-kSE"/>
+                            <constraint firstItem="hqd-Dp-ZGx" firstAttribute="leading" secondItem="KhA-wA-aiV" secondAttribute="trailing" constant="8" id="VDC-ko-dcu"/>
+                            <constraint firstAttribute="trailing" secondItem="hqd-Dp-ZGx" secondAttribute="trailing" constant="8" id="w4Z-N7-dmc"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="awr-gc-N5B"/>
+                    </constraints>
+                    <blurEffect style="extraLight"/>
+                </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -30,6 +63,9 @@
                 <constraint firstAttribute="trailing" secondItem="7nh-s4-o5j" secondAttribute="trailing" id="H09-R0-deD"/>
                 <constraint firstItem="7nh-s4-o5j" firstAttribute="top" secondItem="TBO-gl-mhQ" secondAttribute="top" id="L79-NV-q7d"/>
                 <constraint firstItem="7nh-s4-o5j" firstAttribute="leading" secondItem="TBO-gl-mhQ" secondAttribute="leading" id="OV2-Sy-1Wi"/>
+                <constraint firstItem="NIk-rT-vQq" firstAttribute="leading" secondItem="TBO-gl-mhQ" secondAttribute="leading" id="S9c-6a-RMw"/>
+                <constraint firstAttribute="bottom" secondItem="NIk-rT-vQq" secondAttribute="bottom" id="eKU-BD-W70"/>
+                <constraint firstAttribute="trailing" secondItem="NIk-rT-vQq" secondAttribute="trailing" id="wmC-yS-b8j"/>
             </constraints>
             <point key="canvasLocation" x="547" y="354"/>
         </view>

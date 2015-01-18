@@ -73,6 +73,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         let query = PFQuery(className: "Issue")
         query.whereKey("clinic", equalTo: doctor["clinic"])
+        query.whereKey("closed", notEqualTo: true)
         query.orderByDescending("date")
         query.includeKey("lastMessage")
         
@@ -117,6 +118,9 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     func logoutBarButtonItemAction() {
         
         PFUser.logOut()
+        
+        PFInstallation.currentInstallation().removeObjectForKey("doctor")
+        PFInstallation.currentInstallation().saveEventually()
         
         delegate?.doctorViewControllerDidLogout(self)
     }

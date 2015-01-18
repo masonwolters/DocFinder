@@ -91,6 +91,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
+        if let issueID = userInfo["issueID"] as? String {
+            
+        }
+        
         completionHandler(.NewData)
     }
 }

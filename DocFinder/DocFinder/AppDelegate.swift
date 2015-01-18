@@ -91,8 +91,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
+        println(userInfo)
+        
         if let issueID = userInfo["issueID"] as? String {
-            
+            if let doctorViewController = doctorLogInViewController.doctorViewController {
+                if application.applicationState != .Active {
+                    
+                    tabBarController.selectedIndex = 0
+                    
+                    let issue = PFObject(withoutDataWithClassName: "Issue", objectId: issueID)
+                    doctorViewController.showIssueViewController(issue, animated: false)
+                }
+            }
         }
         
         completionHandler(.NewData)

@@ -288,10 +288,33 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: IssueViewController
     
+    weak var issueViewController: IssueViewController?
+    
     func showIssueViewController(issue: PFObject, animated: Bool) {
         
-        let issueViewController = IssueViewController(issue: issue)
+        func pushIssueViewController() {
+            
+            let issueViewController = IssueViewController(issue: issue)
+            
+            navigationController!.pushViewController(issueViewController, animated: animated)
+            
+            self.issueViewController = issueViewController
+        }
         
-        navigationController!.pushViewController(issueViewController, animated: animated)
+        if let issueViewController = issueViewController {
+            
+            if issueViewController.issue.objectId == issue.objectId {
+                issueViewController.fetchMessages()
+                
+            } else {
+                
+                navigationController!.popViewControllerAnimated(false)
+                pushIssueViewController()
+            }
+            
+        } else {
+            
+            pushIssueViewController()
+        }
     }
 }

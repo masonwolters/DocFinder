@@ -35,12 +35,16 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
     
     // MARK: DoctorViewController
     
+    weak var doctorViewController: DoctorViewController?
+    
     func showDoctorViewController(doctor: PFUser, animated: Bool) {
         
         let doctorViewController = DoctorViewController(doctor: doctor)
         doctorViewController.delegate = self
         
         navigationController!.pushViewController(doctorViewController, animated: animated)
+        
+        self.doctorViewController = doctorViewController
     }
     
     func doctorViewControllerDidLogout(doctorViewController: DoctorViewController) {

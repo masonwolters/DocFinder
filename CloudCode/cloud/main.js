@@ -138,6 +138,8 @@ function handleResponseToExistingIssue(req, res, issue) {
 
 function pushToClinic(clinic, message, callbacks) {
 
+	console.log('push to clinic: ' + clinic.get('name'));
+
 	var query = new Parse.Query(Parse.Installation);
 
 	var doctorQuery = new Parse.Query(Parse.User);
@@ -147,7 +149,9 @@ function pushToClinic(clinic, message, callbacks) {
 	Parse.Push.send({
 		where: query,
 		data: {
-		  alert: message
+		  aps: {
+		  	alert: message
+		  }
 		}
 	}, {
 		success: function() {

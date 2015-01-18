@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EditAttributeDelegate {
     
     //MARK: Initialization
     
@@ -48,10 +48,26 @@ class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as EditAttributeCell
-        cell.attributeLabel.text = editableFields[indexPath.row]
+        cell.attribute = editableFields[indexPath.row]
+        cell.textField.text = doctor[editableFields[indexPath.row]] as String
+        cell.delegate = self
         
         return cell
         
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as EditAttributeCell
+        cell.textField.becomeFirstResponder()
+        
+    }
+    
+    func changedAttribute(attribute: String, value: String) {
+        doctor[attribute] = value
+        doctor.saveEventually()
     }
     
     

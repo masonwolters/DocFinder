@@ -14,11 +14,36 @@
 
       function initialize() {
         var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
+          center: { lat: -11.9610189, lng: 26.9079653},
+          zoom: 5
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
+
+        google.maps.event.addListener(map, 'click', function(event) {
+
+            var name = prompt("Clinic Name: ", "Doctors Without Borders");
+
+            var Clinic = Parse.Object.extend('Clinic');
+            var clinic = new Clinic;
+            clinic.set('name', name);
+            var geoPoint = new Parse.GeoPoint({latitude: event.latLng.lat(), longitude: event.latLng.lng()});
+            clinic.set('location', geoPoint);
+            Parse.Cloud.run('reverseGeocode', {location: geoPoint}, {
+              success: function(response) {
+                clinic.set('locationName', response);
+                clinic.save();
+              }
+            });
+
+            var marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map,
+                title:"Hello World!"
+            });
+            marker.setMap(map);
+
+        });
 
         var query = new Parse.Query(Parse.Object.extend('Clinic'));
 

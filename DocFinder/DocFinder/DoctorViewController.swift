@@ -189,8 +189,28 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.section == Section.Me.rawValue || (indexPath.section == Section.Issues.rawValue && issues != nil)
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        switch Section(rawValue: indexPath.section)! {
+            
+        case .Me:
+            ()
+            
+        case .Issues:
+            showIssueViewController(issues![indexPath.row], animated: true)
+        }
+    }
+    
+    // MARL: IssueViewController
+    
+    func showIssueViewController(issue: PFObject, animated: Bool) {
         
+        let issueViewController = IssueViewController(issue: issue)
+        
+        navigationController!.pushViewController(issueViewController, animated: animated)
     }
 }

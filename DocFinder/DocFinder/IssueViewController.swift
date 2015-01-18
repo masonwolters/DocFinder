@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssueViewController: UIViewController {
+class IssueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Initialization
     
@@ -20,8 +20,7 @@ class IssueViewController: UIViewController {
         
         // Navigation item
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutBarButtonItemAction")
-        navigationItem.title = "Me"
+        navigationItem.title = issue["phoneNumber"] as? String
         
         // Fetch
         
@@ -95,7 +94,7 @@ class IssueViewController: UIViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.PatientMessage.rawValue, forIndexPath: indexPath) as MessageCell
-                cell.senderLabel.text = message["phoneNumber"] as? String
+                cell.senderLabel.text = "Patient"
                 return cell
             }
         }()

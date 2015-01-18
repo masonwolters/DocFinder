@@ -4,4 +4,4 @@
 
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
-#import <JSQMessagesViewController/JSQMessagesViewController.h>
+#import <JSQMessagesViewController/JSQMessages.h> 

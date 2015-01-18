@@ -12,13 +12,13 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9L5-9h-i14" id="LxJ-lh-1wC">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-Te-3kc">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-Te-3kc">
                         <rect key="frame" x="15" y="8" width="38" height="17"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-iB-oOf">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum stuff things message goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-iB-oOf">
                         <rect key="frame" x="15" y="27" width="260" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="highlightedColor"/>
@@ -32,6 +32,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="DQB-Te-3kc" secondAttribute="trailing" constant="15" id="0xF-6e-zwO"/>
+                    <constraint firstItem="fzg-iB-oOf" firstAttribute="top" secondItem="DQB-Te-3kc" secondAttribute="bottom" constant="2" id="2Qt-mE-lTi"/>
                     <constraint firstAttribute="trailing" secondItem="dhY-u8-9d5" secondAttribute="trailing" constant="15" id="3Df-VW-pag"/>
                     <constraint firstAttribute="centerX" secondItem="dhY-u8-9d5" secondAttribute="centerX" id="5Ko-mO-kGp"/>
                     <constraint firstAttribute="trailing" secondItem="fzg-iB-oOf" secondAttribute="trailing" constant="45" id="B6a-jI-np6"/>
@@ -46,6 +47,7 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="0xF-6e-zwO"/>
+                        <exclude reference="CAV-H2-UR8"/>
                         <exclude reference="3Df-VW-pag"/>
                         <exclude reference="sql-pP-mf3"/>
                     </mask>

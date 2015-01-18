@@ -38,14 +38,18 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let success = successCallback {
-            success(location: locations.last as CLLocation)
+            dispatch_async(dispatch_get_main_queue()) {
+                success(location: locations.last as CLLocation)
+            }
         }
         locationManager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         if let errorCallback = errorCallback {
-            errorCallback(error: error)
+            dispatch_async(dispatch_get_main_queue()) {
+                errorCallback(error: error)
+            }
         }
     }
     

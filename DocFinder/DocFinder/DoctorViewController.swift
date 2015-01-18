@@ -55,7 +55,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         let query = PFQuery(className: "Issue")
         query.whereKey("clinic", equalTo: doctor["clinic"])
-        query.orderByAscending("date")
+        query.orderByDescending("date")
         query.includeKey("lastMessage")
         
         query.findObjectsInBackgroundWithBlock { objects, error in
@@ -153,9 +153,9 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
                 let message = issue["lastMessage"] as PFObject
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Issue.rawValue, forIndexPath: indexPath) as IssueCell
-                cell.patientNumberLabel.text! = issue["phoneNumber"] as String
-                cell.dateLabel.text! = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
-                cell.messageLabel.text! = message["text"] as String
+                cell.patientNumberLabel.text = issue["phoneNumber"] as? String
+                cell.dateLabel.text = MessageDateFormatter.localizedStringFromDate(message["date"] as NSDate)
+                cell.messageLabel.text = message["text"] as? String
                 return cell
                 
             } else {

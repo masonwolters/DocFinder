@@ -24,6 +24,10 @@ class DoctorLogInViewController: UIViewController, PFLogInViewControllerDelegate
     
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
         
+        let installation = PFInstallation.currentInstallation()
+        installation["doctor"] = user
+        installation.saveEventually()
+        
         dismissViewControllerAnimated(true) {
             self.showDoctorViewController(user, animated: true)
         }

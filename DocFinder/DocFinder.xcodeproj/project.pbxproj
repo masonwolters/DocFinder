@@ -37,6 +37,8 @@
 		BADBB6F11A6A2FFA007AD96F /* DocFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BADBB6F01A6A2FFA007AD96F /* DocFinderTests.m */; };
 		BAF00BD21A6B9F830003912E /* DoctorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF00BD11A6B9F830003912E /* DoctorInfoViewController.swift */; };
 		BAF00BD41A6BA0200003912E /* DoctorInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAF00BD31A6BA0200003912E /* DoctorInfoViewController.xib */; };
+		BAF00BDB1A6BAAA10003912E /* EditAttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF00BD91A6BAAA10003912E /* EditAttributeCell.swift */; };
+		BAF00BDC1A6BAAA10003912E /* EditAttributeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAF00BDA1A6BAAA10003912E /* EditAttributeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		BADBB6F01A6A2FFA007AD96F /* DocFinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocFinderTests.m; sourceTree = "<group>"; };
 		BAF00BD11A6B9F830003912E /* DoctorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorInfoViewController.swift; sourceTree = "<group>"; };
 		BAF00BD31A6BA0200003912E /* DoctorInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorInfoViewController.xib; sourceTree = "<group>"; };
+		BAF00BD91A6BAAA10003912E /* EditAttributeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAttributeCell.swift; sourceTree = "<group>"; };
+		BAF00BDA1A6BAAA10003912E /* EditAttributeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAttributeCell.xib; sourceTree = "<group>"; };
 		F5248C4F38913C53C840839E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,8 @@
 				467AEDDF1A6ACF550028384C /* IssueCell.xib */,
 				BAF00BD11A6B9F830003912E /* DoctorInfoViewController.swift */,
 				BAF00BD31A6BA0200003912E /* DoctorInfoViewController.xib */,
+				BAF00BD91A6BAAA10003912E /* EditAttributeCell.swift */,
+				BAF00BDA1A6BAAA10003912E /* EditAttributeCell.xib */,
 			);
 			name = DoctorViewController;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 				BAF00BD41A6BA0200003912E /* DoctorInfoViewController.xib in Resources */,
 				467AEDD81A6AC8ED0028384C /* ClinicMapViewController.xib in Resources */,
 				467AEDE01A6ACF550028384C /* IssueCell.xib in Resources */,
+				BAF00BDC1A6BAAA10003912E /* EditAttributeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +422,7 @@
 				46AA71B21A6A3DA40032E710 /* DoctorLogInViewController.swift in Sources */,
 				467AEE031A6B14350028384C /* MessageCell.swift in Sources */,
 				467AEDF61A6B0DFB0028384C /* MessageDateFormatter.swift in Sources */,
+				BAF00BDB1A6BAAA10003912E /* EditAttributeCell.swift in Sources */,
 				467AEDFA1A6B10140028384C /* IssueViewController.swift in Sources */,
 				BAF00BD21A6B9F830003912E /* DoctorInfoViewController.swift in Sources */,
 				467AEDDA1A6AC8F90028384C /* ClinicMapViewController.swift in Sources */,

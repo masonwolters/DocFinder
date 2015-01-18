@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorInfoViewController: UIViewController {
+class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Initialization
     
@@ -25,6 +25,8 @@ class DoctorInfoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @IBOutlet var tableView: UITableView!
+    
     //MARK: Model
     
     let doctor: PFUser
@@ -34,7 +36,23 @@ class DoctorInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.registerNib(UINib(nibName: "EditAttributeCell", bundle: nil), forCellReuseIdentifier: "cell")
+    }
+    
+    //MARK: TableView DataSource
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return editableFields.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as EditAttributeCell
+        cell.attributeLabel.text = editableFields[indexPath.row]
+        
+        return cell
         
     }
-
+    
+    
 }

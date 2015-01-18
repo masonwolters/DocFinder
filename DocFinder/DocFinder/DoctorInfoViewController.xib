@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DoctorViewController" customModule="DocFinder" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DoctorInfoViewController" customModule="DocFinder" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="iot-0U-Jhh" id="Hm3-iU-f1I"/>
-                <outlet property="view" destination="iN0-l3-epB" id="WcZ-sF-hAc"/>
+                <outlet property="tableView" destination="jOu-1T-heZ" id="WFE-Sg-kRc"/>
+                <outlet property="view" destination="iN0-l3-epB" id="M4A-Ca-aXV"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,21 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="iot-0U-Jhh">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-1T-heZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="sI5-qq-HmW"/>
-                        <outlet property="delegate" destination="-1" id="Yb5-0W-q0M"/>
+                        <outlet property="dataSource" destination="-1" id="4gq-h8-3tP"/>
+                        <outlet property="delegate" destination="-1" id="ZSx-eW-Ia3"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="iot-0U-Jhh" secondAttribute="bottom" id="3Y3-9a-ER6"/>
-                <constraint firstItem="iot-0U-Jhh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Kr-Aq-Sa9"/>
-                <constraint firstAttribute="trailing" secondItem="iot-0U-Jhh" secondAttribute="trailing" id="AFE-2R-eqM"/>
-                <constraint firstItem="iot-0U-Jhh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UB6-qG-pr2"/>
+                <constraint firstItem="jOu-1T-heZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5dm-LK-qZG"/>
+                <constraint firstAttribute="trailing" secondItem="jOu-1T-heZ" secondAttribute="trailing" id="BSD-3g-xqN"/>
+                <constraint firstAttribute="bottom" secondItem="jOu-1T-heZ" secondAttribute="bottom" id="dj3-YX-CkB"/>
+                <constraint firstItem="jOu-1T-heZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ivq-2G-EUY"/>
             </constraints>
         </view>
     </objects>

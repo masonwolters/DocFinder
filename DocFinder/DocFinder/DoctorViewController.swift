@@ -40,7 +40,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: Delegate
     
-    var delegate: DoctorViewControllerDelegate?
+    weak var delegate: DoctorViewControllerDelegate?
     
     // MARK: Model
     
@@ -260,7 +260,7 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             
             switch Section.MeRow(rawValue: indexPath.row)! {
             case .Doctor:
-                ()
+                showDoctorInfoViewController()
                 
             case .Clinic:
                 showClinicViewController(clinic!, animated: true)
@@ -313,5 +313,13 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
             
             pushIssueViewController()
         }
+    }
+    
+    //MARK: InfoViewController
+    
+    func showDoctorInfoViewController() {
+        let doctorInfoViewController = DoctorInfoViewController(doctor: PFUser.currentUser())
+        
+        navigationController!.pushViewController(doctorInfoViewController, animated: true)
     }
 }

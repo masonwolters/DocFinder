@@ -15,9 +15,16 @@ app.post('/receiveSMS', function(req, res) {
 	var query = new Parse.Query(Parse.Object.extend('Issue'));
 	query.equalTo('phoneNumber', req.body.From);
 	query.include('clinic');
+	query.equalTo('closed', false);
 	query.find({
 		success: function(issues) {
-			if (issues.length > 0) {
+			if (req.body.Body == 'SEARCH' || req.body.Body == 'NEW') {
+				if (issues.length > 0) {
+					handleCloseIssue(req, res, issues[0]);
+				} else {
+					handleCloseIssue(req, res, null);
+				}
+			} else if (issues.length > 0) {
 				handleResponseToExistingIssue(req, res, issues[0]);
 			} else {
 				handleResponseToNewIssue(req, res);
@@ -54,6 +61,7 @@ function handleResponseToNewIssue(req, res) {
 						issue.set('locationName', place.name);
 						issue.set('phoneNumber', req.body.From);
 						issue.set('date', new Date());
+						issue.set('closed', false);
 						console.log('should save issue');
 						issue.save(null, {
 							success: function(object) {
@@ -121,7 +129,7 @@ function handleResponseToExistingIssue(req, res, issue) {
 			issue.set('date', new Date());
 			issue.save();
 
-			pushToClinic(issue.get('clinic'), req.body.Body, {
+			pushToClinic(issue.get('clinic'), issue, req.body.Body, {
 				success: function() {
 
 				},
@@ -139,7 +147,28 @@ function handleResponseToExistingIssue(req, res, issue) {
 
 }
 
-function pushToClinic(clinic, message, callbacks) {
+function handleCloseIssue(req, res, issue) {
+
+	if (issue) {
+		issue.set('closed', true);
+		issue.save();
+	}
+
+	twilio.sendSms({
+		to: req.body.From,
+		from: '+12313664054',
+		body: 'Type your location to search for clinics.'
+	}, function(err, response) {
+		if (err) {
+			res.end('error');
+		} else {
+			res.end('success');
+		}
+	});
+
+}
+
+function pushToClinic(clinic, issue, message, callbacks) {
 
 	console.log('push to clinic: ' + clinic.get('name'));
 
@@ -153,8 +182,10 @@ function pushToClinic(clinic, message, callbacks) {
 		where: query,
 		data: {
 		  aps: {
-		  	alert: message
-		  }
+		  	alert: message,
+		  	sound: "default"
+		  },
+		  issueID: issue.id
 		}
 	}, {
 		success: function() {
@@ -187,7 +218,7 @@ function clinicsNearRadiusOfLatLng(lat, lng, radius, callbacks) {
 function textResponseForClinic(clinic, gpInfo) {
 	//gpInfo is what is returned from googlePlaces.coordinateForSearch
 
-	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %>. It is <%= distance %> km away. Reply to message this clinic.';
+	var template = 'The closest clinic to <%= userLocationName %> is: <%= clinicName %>, located at: <%= clinicLocationName %>. It is <%= distance %> km away. Reply to message this clinic. Reply NEW to start over.';
 
 	var userGeoPoint = new Parse.GeoPoint({latitude: gpInfo.lat, longitude: gpInfo.lng});
 	var distance = userGeoPoint.kilometersTo(clinic.get('location'));
@@ -207,6 +238,27 @@ function twilioSendError(phoneNumber, message) {
 		body: message
 	});
 }
+
+Parse.Cloud.define('replyToIssue', function(req, res) {
+	//params
+		//phoneNumber
+		//string
+
+	twilio.sendSms({
+		to: req.params.phoneNumber,
+		from: '+12313664054',
+		body: req.params.message
+	}, function(err, response) {
+		if (err) {
+			res.error('Error sending message');
+		} else {
+			res.success('Success sending message');
+		}
+	});
+
+});
+
+Parse.Cloud.define('reverseGeocode', googlePlaces.reverseGeocode);
   
 app.listen();
 

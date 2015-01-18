@@ -15,7 +15,7 @@ app.post('/receiveSMS', function(req, res) {
 	var query = new Parse.Query(Parse.Object.extend('Issue'));
 	query.equalTo('phoneNumber', req.body.From);
 	query.include('clinic');
-	query.notEqualTo('closed', true);
+	query.equalTo('closed', false);
 	query.find({
 		success: function(issues) {
 			if (req.body.Body == 'SEARCH' || req.body.Body == 'NEW') {

@@ -93,6 +93,8 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.registerNib(Cell.Clinic.nib, forCellReuseIdentifier: Cell.Clinic.rawValue)
         tableView.registerNib(Cell.Issue.nib, forCellReuseIdentifier: Cell.Issue.rawValue)
         tableView.registerNib(Cell.Loading.nib, forCellReuseIdentifier: Cell.Loading.rawValue)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchIssues", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -335,4 +337,5 @@ class DoctorViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Section.MeRow.Doctor.rawValue, inSection: Section.Me.rawValue)], withRowAnimation: .None)
     }
+
 }

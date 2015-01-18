@@ -88,6 +88,7 @@ class IssueViewController: UIViewController, UITableViewDataSource, UITableViewD
         keyboardMinY = view.bounds.height
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchMessages", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     // MARK: Table view

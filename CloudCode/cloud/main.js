@@ -67,14 +67,14 @@ function handleResponseToNewIssue(req, res) {
 							}
 						});
 
-						pushToClinic(clinic, 'New issue', {
-							success: function() {
+						// pushToClinic(clinic, 'New issue', {
+						// 	success: function() {
 
-							},
-							error: function(error) {
+						// 	},
+						// 	error: function(error) {
 
-							}
-						});
+						// 	}
+						// });
 					} else {
 						//No Clinics Found
 						response = 'No clinics found within radius of: ' + place.name;
@@ -121,7 +121,7 @@ function handleResponseToExistingIssue(req, res, issue) {
 			issue.set('date', new Date());
 			issue.save();
 
-			pushToClinic(issue.get('clinic'), 'Push Message', {
+			pushToClinic(issue.get('clinic'), req.body.Body, {
 				success: function() {
 
 				},

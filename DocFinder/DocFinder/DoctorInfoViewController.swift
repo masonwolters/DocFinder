@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol DoctorInfoViewControllerDelegate: class {
+    
+    func doctorInfoViewControllerDidChangeAttribute(doctorInfoViewController: DoctorInfoViewController)
+}
+
 class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EditAttributeDelegate {
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     init(doctor: PFUser) {
         
@@ -27,7 +32,11 @@ class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet var tableView: UITableView!
     
-    //MARK: Model
+    // MARK: Delegate
+    
+    weak var delegate: DoctorInfoViewControllerDelegate?
+    
+    // MARK: Model
     
     let doctor: PFUser
     
@@ -68,7 +77,7 @@ class DoctorInfoViewController: UIViewController, UITableViewDataSource, UITable
     func changedAttribute(attribute: String, value: String) {
         doctor[attribute] = value
         doctor.saveEventually()
+        
+        delegate?.doctorInfoViewControllerDidChangeAttribute(self)
     }
-    
-    
 }

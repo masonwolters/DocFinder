@@ -50,6 +50,10 @@ class DoctorLogInViewController: UIViewController, UITextFieldDelegate, DoctorVi
             
             if let doctor = user {
                 
+                let installation = PFInstallation.currentInstallation()
+                installation["doctor"] = doctor
+                installation.saveEventually()
+                
                 self.passwordTextField.text = ""
                 
                 self.showDoctorViewController(doctor, animated: true)
@@ -120,19 +124,6 @@ class DoctorLogInViewController: UIViewController, UITextFieldDelegate, DoctorVi
     
     @IBAction func tapGestureRecognizerAction() {
         view.endEditing(true)
-    }
-    
-    // MARK: PFLogInViewControllerDelegate
-    
-    func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
-        
-        let installation = PFInstallation.currentInstallation()
-        installation["doctor"] = user
-        installation.saveEventually()
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        
-        showDoctorViewController(user, animated: false)
     }
     
     // MARK: DoctorViewController
